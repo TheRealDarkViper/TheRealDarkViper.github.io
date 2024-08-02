@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Directory CheatSheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #000;
+            color: #0f0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        table, th, td {
+            border: 1px solid #0f0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        code {
+            background-color: #333;
+            color: #0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #0f0;
+            padding-left: 1em;
+            color: #666;
+        }
+        .section-divider {
+            border-top: 1px solid #0f0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Active Directory CheatSheet</h1>
+
+    <div class="section-divider"></div>
+    <h2>Basic Commands Needed</h2>
+    <p><code>xfreerdp /v:&lt;IP&gt; /u:&lt;User&gt; /p:&lt;Password&gt;</code></p>
+    <p><code>ping &lt;IP&gt;</code></p>
+
+    <div class="section-divider"></div>
+    <h2>General Commands</h2>
+    <p><code>Get-Module</code><br>
+    Returns a list of loaded PowerShell Modules.</p>
+
+    <p><code>Get-Command -Module ActiveDirectory</code><br>
+    Lists commands for the module specified.</p>
+
+    <p><code>Get-Help &lt;cmd-let&gt;</code><br>
+    Shows help syntax for the cmd-let specified.</p>
+
+    <p><code>Import-Module ActiveDirectory</code><br>
+    Imports the Active Directory Module</p>
+
+    <div class="section-divider"></div>
+    <h2>Active Directory PowerShell Commands</h2>
+
+    <div class="section-divider"></div>
+    <h3>AD User Commands</h3>
+    <p><code>New-ADUser -Name "first last" -Accountpassword (Read-Host -AsSecureString "Super$ecurePassword!") -Enabled $true -OtherAttributes @{'title'="Analyst";'mail'="f.last@domain.com"}</code><br>
+    Add a user to AD and set attributes.</p>
+
+    <p><code>Remove-ADUser -Identity &lt;name&gt;</code><br>
+    Removes a user from AD with the identity of 'name'.</p>
+
+    <p><code>Unlock-ADAccount -Identity &lt;name&gt;</code><br>
+    Unlocks a user account with the identity of 'name'.</p>
+
+    <p><code>Set-ADAccountPassword -Identity &lt;'name'&gt; -Reset -NewPassword (ConvertTo-SecureString -AsPlainText "NewP@ssw0rdReset!" -Force)</code><br>
+    Set the password of an AD user to the password specified.</p>
+
+    <p><code>Set-ADUser -Identity amasters -ChangePasswordAtLogon $true</code><br>
+    Force a user to change their password at next logon attempt.</p>
+
+    <div class="section-divider"></div>
+    <h3>AD Group Commands</h3>
+    <p><code>New-ADOrganizationalUnit -Name "name" -Path "OU=folder,DC=domain,DC=local"</code><br>
+    Create a new AD OU container named "name" in the path specified.</p>
+
+    <p><code>New-ADGroup -Name "name" -SamAccountName analysts -GroupCategory Security -GroupScope Global -DisplayName "Security Analysts" -Path "CN=Users,DC=domain,DC=local" -Description "Members of this group are Security Analysts under the IT OU"</code><br>
+    Create a new security group named "name" with the accompanying attributes.</p>
+
+    <p><code>Add-ADGroupMember -Identity 'group name' -Members 'ACepheus,OStarchaser,ACallisto'</code><br>
+    Add an AD user to the group specified.</p>
+
+    <div class="section-divider"></div>
+    <h3>GPO Commands</h3>
+    <p><code>Copy-GPO -SourceName "GPO to copy" -TargetName "Name"</code><br>
+    Copy a GPO for use as a new GPO with a target name of "name".</p>
+
+    <p><code>New-GPLink -Name "Security Analysts Control" -Target "ou=Security Analysts,ou=IT,OU=HQ-NYC,OU=Employees,OU=Corp,dc=INLANEFREIGHT,dc=LOCAL" -LinkEnabled Yes</code><br>
+    Create a new GPO and link it to a specific OU or security group.</p>
+
+    <p><code>Set-GPLink -Name "Security Analysts Control" -Target "ou=Security Analysts,ou=IT,OU=HQ-NYC,OU=Employees,OU=Corp,dc=INLANEFREIGHT,dc=LOCAL" -LinkEnabled Yes</code><br>
+    Link an existing GPO for use to a specific OU or security group.</p>
+
+    <div class="section-divider"></div>
+    <h3>Computer Commands</h3>
+    <p><code>Add-Computer -DomainName 'INLANEFREIGHT.LOCAL' -Credential 'INLANEFREIGHT\HTB-student_adm' -Restart</code><br>
+    Add a new computer to the domain using the credentials specified.</p>
+
+    <p><code>Add-Computer -ComputerName 'name' -LocalCredential '.\localuser' -DomainName 'INLANEFREIGHT.LOCAL' -Credential 'INLANEFREIGHT\htb-student_adm' -Restart</code><br>
+    Remotely add a computer to a domain.</p>
+
+    <p><code>Get-ADComputer -Identity "name" -Properties * | select CN,CanonicalName,IPv4Address</code><br>
+    Check for a computer named "name" and view its properties.</p>
+
+    <div class="section-divider"></div>
+    <h2>References</h2>
+    <p><a href="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview" style="color: #0f0;">Microsoft</a></p>
+</body>
+</html>

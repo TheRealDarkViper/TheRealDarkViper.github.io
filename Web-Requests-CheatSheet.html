@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Requests Cheatsheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #000;
+            color: #0f0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        table, th, td {
+            border: 1px solid #0f0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        code {
+            background-color: #333;
+            color: #0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #0f0;
+            padding-left: 1em;
+            color: #666;
+        }
+        .section-divider {
+            border-top: 1px solid #0f0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Requests Cheatsheet</h1>
+
+    <div class="section-divider"></div>
+    <h2>cURL</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>curl -h</code></td>
+            <td>cURL help menu</td>
+        </tr>
+        <tr>
+            <td><code>curl inlanefreight.com</code></td>
+            <td>Basic GET request</td>
+        </tr>
+        <tr>
+            <td><code>curl -s -O inlanefreight.com/index.html</code></td>
+            <td>Download file</td>
+        </tr>
+        <tr>
+            <td><code>curl -k https://inlanefreight.com</code></td>
+            <td>Skip HTTPS (SSL) certificate validation</td>
+        </tr>
+        <tr>
+            <td><code>curl inlanefreight.com -v</code></td>
+            <td>Print full HTTP request/response details</td>
+        </tr>
+        <tr>
+            <td><code>curl -I https://www.inlanefreight.com</code></td>
+            <td>Send HEAD request (only prints response headers)</td>
+        </tr>
+        <tr>
+            <td><code>curl -i https://www.inlanefreight.com</code></td>
+            <td>Print response headers and response body</td>
+        </tr>
+        <tr>
+            <td><code>curl https://www.inlanefreight.com -A 'Mozilla/5.0'</code></td>
+            <td>Set User-Agent header</td>
+        </tr>
+        <tr>
+            <td><code>curl -u admin:admin http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/</code></td>
+            <td>Set HTTP basic authorization credentials</td>
+        </tr>
+        <tr>
+            <td><code>curl http://admin:admin@&lt;SERVER_IP&gt;:&lt;PORT&gt;/</code></td>
+            <td>Pass HTTP basic authorization credentials in the URL</td>
+        </tr>
+        <tr>
+            <td><code>curl -H 'Authorization: Basic YWRtaW46YWRtaW4=' http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/</code></td>
+            <td>Set request header</td>
+        </tr>
+        <tr>
+            <td><code>curl 'http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/search.php?search=le'</code></td>
+            <td>Pass GET parameters</td>
+        </tr>
+        <tr>
+            <td><code>curl -X POST -d 'username=admin&amp;password=admin' http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/</code></td>
+            <td>Send POST request with POST data</td>
+        </tr>
+        <tr>
+            <td><code>curl -b 'PHPSESSID=c1nsa6op7vtk7kdis7bcnbadf1' http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/</code></td>
+            <td>Set request cookies</td>
+        </tr>
+        <tr>
+            <td><code>curl -X POST -d '{"search":"london"}' -H 'Content-Type: application/json' http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/search.php</code></td>
+            <td>Send POST request with JSON data</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>APIs</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>curl http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/api.php/city/london</code></td>
+            <td>Read entry</td>
+        </tr>
+        <tr>
+            <td><code>curl -s http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/api.php/city/ | jq</code></td>
+            <td>Read all entries</td>
+        </tr>
+        <tr>
+            <td><code>curl -X POST http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/api.php/city/ -d '{"city_name":"HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'</code></td>
+            <td>Create (add) entry</td>
+        </tr>
+        <tr>
+            <td><code>curl -X PUT http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/api.php/city/london -d '{"city_name":"New_HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'</code></td>
+            <td>Update (modify) entry</td>
+        </tr>
+        <tr>
+            <td><code>curl -X DELETE http://&lt;SERVER_IP&gt;:&lt;PORT&gt;/api.php/city/New_HTB_City</code></td>
+            <td>Delete entry</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Browser DevTools</h2>
+    <table>
+        <tr>
+            <th>Shortcut</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>CTRL+SHIFT+I</code> or <code>F12</code></td>
+            <td>Show devtools</td>
+        </tr>
+        <tr>
+            <td><code>CTRL+SHIFT+E</code></td>
+            <td>Show Network tab</td>
+        </tr>
+        <tr>
+            <td><code>CTRL+SHIFT+K</code></td>
+            <td>Show Console tab</td>
+        </tr>
+    </table>
+</body>
+</html>

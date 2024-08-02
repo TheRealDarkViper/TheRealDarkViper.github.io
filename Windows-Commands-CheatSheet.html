@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Command CheatSheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #000;
+            color: #0f0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        table, th, td {
+            border: 1px solid #0f0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        code {
+            background-color: #333;
+            color: #0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #0f0;
+            padding-left: 1em;
+            color: #666;
+        }
+        .section-divider {
+            border-top: 1px solid #0f0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Windows Command CheatSheet</h1>
+
+    <div class="section-divider"></div>
+    <h2>Introduction to Windows Command Line</h2>
+
+    <div class="section-divider"></div>
+    <h2>Admin Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>xfreerdp /v:&lt;target IP&gt; /u:&lt;user&gt; /p:&lt;password&gt;</code></td>
+            <td>Initiate a RDP connection with the target host.</td>
+        </tr>
+        <tr>
+            <td><code>ssh &lt;user&gt;@&lt;target IP&gt;</code></td>
+            <td>Connect to target host via SSH.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;PIPE&gt;</code></td>
+            <td>When you see &lt;PIPE&gt; specified in the commands below, it is saying to use the Pipe key (shift+backslash on US Keyboard layouts).</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>General Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>help &lt;command&gt;</code></td>
+            <td>Provides help information for Windows commands.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Help &lt;cmdlet&gt;</code></td>
+            <td>Displays help about Windows PowerShell cmdlets and concepts.</td>
+        </tr>
+        <tr>
+            <td><code>Update-Help</code></td>
+            <td>Downloads and installs the most up-to-date help files for Windows PowerShell.</td>
+        </tr>
+        <tr>
+            <td><code>CTRL-C</code></td>
+            <td>Interrupts a currently running process.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Module</code></td>
+            <td>View the modules loaded into your PowerShell session.</td>
+        </tr>
+        <tr>
+            <td><code>Import-Module</code></td>
+            <td>Import a module into your PowerShell session.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Command</code></td>
+            <td>View all commands, cmdlets, functions, and aliases loaded into your PowerShell session.</td>
+        </tr>
+        <tr>
+            <td><code>Set-Location &lt;path&gt;</code></td>
+            <td>Changes our location in the filesystem. Same as using CD.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Content &lt;file&gt;</code></td>
+            <td>View the contents of an object. Similar to type or cat.</td>
+        </tr>
+        <tr>
+            <td><code>systeminfo</code></td>
+            <td>Displays operating system configuration information for a local or remote machine.</td>
+        </tr>
+        <tr>
+            <td><code>hostname</code></td>
+            <td>Displays the name of the current host.</td>
+        </tr>
+        <tr>
+            <td><code>ver</code></td>
+            <td>Displays the current Windows version.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Terminal History</h2>
+    <table>
+        <tr>
+            <th>Command/Key</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>doskey /history</code></td>
+            <td>Prints out the session's command history to the terminal or output it to a file when specified.</td>
+        </tr>
+        <tr>
+            <td><code>page up</code></td>
+            <td>Places the first command in our session history to the prompt.</td>
+        </tr>
+        <tr>
+            <td><code>page down</code></td>
+            <td>Places the last command in history to the prompt.</td>
+        </tr>
+        <tr>
+            <td><code>⇧</code></td>
+            <td>Scrolls up through our command history to view previously run commands.</td>
+        </tr>
+        <tr>
+            <td><code>⇩</code></td>
+            <td>Scrolls down to our most recent commands run.</td>
+        </tr>
+        <tr>
+            <td><code>⇨</code></td>
+            <td>Types the previous command to prompt one character at a time.</td>
+        </tr>
+        <tr>
+            <td><code>F3</code></td>
+            <td>Retypes the entire previous entry to our prompt.</td>
+        </tr>
+        <tr>
+            <td><code>F5</code></td>
+            <td>Pressing F5 multiple times allows us to cycle through previous commands.</td>
+        </tr>
+        <tr>
+            <td><code>F7</code></td>
+            <td>Opens an interactive list of previous commands.</td>
+        </tr>
+        <tr>
+            <td><code>F9</code></td>
+            <td>Enters a command to our prompt based on the number specified. The number corresponds to the command's place in our history.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>File & Directory Commands</h2>
+    <h3>CMD.exe</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>dir</code></td>
+            <td>Lists directory contents.</td>
+        </tr>
+        <tr>
+            <td><code>dir /A &lt;attributes&gt;</code></td>
+            <td>List directory contents with the specified attributes.</td>
+        </tr>
+        <tr>
+            <td><code>dir /A:H</code></td>
+            <td>List hidden files in the current directory.</td>
+        </tr>
+        <tr>
+            <td><code>dir /A:R</code></td>
+            <td>List read-only files in the current directory.</td>
+        </tr>
+        <tr>
+            <td><code>cd</code></td>
+            <td>Prints current working directory.</td>
+        </tr>
+        <tr>
+            <td><code>chdir</code></td>
+            <td>Prints current working directory. Alternate command.</td>
+        </tr>
+        <tr>
+            <td><code>cd &lt;path&gt;</code></td>
+            <td>Changes the directory.</td>
+        </tr>
+        <tr>
+            <td><code>chdir
+
+ &lt;path&gt;</code></td>
+            <td>Changes the directory. Alternate command.</td>
+        </tr>
+        <tr>
+            <td><code>tree &lt;path&gt;</code></td>
+            <td>Graphically displays the directory structure from the specified path.</td>
+        </tr>
+        <tr>
+            <td><code>tree /F &lt;path&gt;</code></td>
+            <td>Graphically displays the directory structure from the specified path, including files within the directory.</td>
+        </tr>
+        <tr>
+            <td><code>cls</code></td>
+            <td>Clears the terminal.</td>
+        </tr>
+        <tr>
+            <td><code>mkdir &lt;directory name&gt;</code></td>
+            <td>Creates a directory in the current working directory(or specified directory) with the specified name.</td>
+        </tr>
+        <tr>
+            <td><code>md &lt;directory name&gt;</code></td>
+            <td>Creates a directory in the current working directory(or specified directory) with the specified name. Alias of mkdir.</td>
+        </tr>
+        <tr>
+            <td><code>rmdir &lt;directory name&gt;</code></td>
+            <td>Removes a directory in the current working directory(or specified directory) with the specified name.</td>
+        </tr>
+        <tr>
+            <td><code>rd &lt;directory name&gt;</code></td>
+            <td>Removes a directory in the current working directory(or specified directory) with the specified name. Alias of rmdir.</td>
+        </tr>
+        <tr>
+            <td><code>rmdir /S &lt;directory name&gt;</code></td>
+            <td>Recursively removes all directories and files in the specified directory.</td>
+        </tr>
+        <tr>
+            <td><code>move [source] [destination]</code></td>
+            <td>Move file(s) from the source folder to the destination folder.</td>
+        </tr>
+        <tr>
+            <td><code>copy [source] [destination]</code></td>
+            <td>Copy file(s) from the source folder to the destination folder. Only works with files and not folders.</td>
+        </tr>
+        <tr>
+            <td><code>copy [source] [destination] /V</code></td>
+            <td>Copy file(s) from the source folder to the destination folder. Validates that the file or files are copied correctly.</td>
+        </tr>
+        <tr>
+            <td><code>xcopy [source] [destination]</code></td>
+            <td>Copy file(s) and folder(s) from the source folder to the destination folder. Replaced by Robocopy and currently deprecated.</td>
+        </tr>
+        <tr>
+            <td><code>xcopy /E [source] [destination]</code></td>
+            <td>Copy file(s) and folder(s) from the source folder to the destination folder, including empty directories.</td>
+        </tr>
+        <tr>
+            <td><code>xcopy /K [source] [destination]</code></td>
+            <td>Copy file(s) and folder(s) from the source folder to the destination folder. Retains the current attributes of the copied files.</td>
+        </tr>
+        <tr>
+            <td><code>robocopy [source] [destination]</code></td>
+            <td>Copy files(s) and folder(s) from the source folder to the destination folder. It has a more robust feature set compared to xcopy.</td>
+        </tr>
+        <tr>
+            <td><code>robocopy /E /MIR /A-:SH [source] [destination]</code></td>
+            <td>Copy files(s) and folder(s) from the source folder to the destination folder. Mirrors the destination directory to the source and clears any additional attributes using the /A-:SH parameter.</td>
+        </tr>
+        <tr>
+            <td><code>more &lt;file&gt;</code></td>
+            <td>Displays the output of a file or command one screen at a time.</td>
+        </tr>
+        <tr>
+            <td><code>more /S &lt;file&gt;</code></td>
+            <td>Displays the output of a file or command one screen at a time. Compresses multiple blank lines into a single line.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;command&gt; &lt;PIPE&gt; more</code></td>
+            <td>Displays the output of a command through a &lt;PIPE&gt; to more.</td>
+        </tr>
+        <tr>
+            <td><code>type &lt;file&gt;</code></td>
+            <td>Displays the contents of a file.</td>
+        </tr>
+        <tr>
+            <td><code>fsutil file createNew &lt;filename&gt; &lt;length&gt;</code></td>
+            <td>Creates a new file with a specified file name and length.</td>
+        </tr>
+        <tr>
+            <td><code>echo "example string" &gt; &lt;filename&gt;</code></td>
+            <td>Writes the contents provided into a new or existing file with the specified filename. If the file does not exist, a new one will be created; otherwise, the previous file's contents will be overwritten.</td>
+        </tr>
+        <tr>
+            <td><code>echo "example string" &gt;&gt; &lt;filename&gt;</code></td>
+            <td>Appends the provided contents to an existing file.</td>
+        </tr>
+        <tr>
+            <td><code>ren &lt;filename1&gt; &lt;filename2&gt;</code></td>
+            <td>Renames a file.</td>
+        </tr>
+        <tr>
+            <td><code>del &lt;file&gt;</code></td>
+            <td>Deletes a file or files.</td>
+        </tr>
+        <tr>
+            <td><code>del /A:R &lt;file&gt;</code></td>
+            <td>Deletes a file or files with the read-only attribute set.</td>
+        </tr>
+        <tr>
+            <td><code>del /A:H &lt;file&gt;</code></td>
+            <td>Deletes a file or files with the hidden attribute set.</td>
+        </tr>
+        <tr>
+            <td><code>erase &lt;file&gt;</code></td>
+            <td>Deletes a file or files. Interchangeable with del command.</td>
+        </tr>
+    </table>
+
+    <h3>PowerShell</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Alias</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Get-Item</code></td>
+            <td>gi</td>
+            <td>Retrieve an object (could be a file, folder, registry object, etc.)</td>
+        </tr>
+        <tr>
+            <td><code>Get-ChildItem</code></td>
+            <td>ls / dir / gci</td>
+            <td>Lists out the content of a folder or registry hive.</td>
+        </tr>
+        <tr>
+            <td><code>New-Item</code></td>
+            <td>md / mkdir / ni</td>
+            <td>Create new objects. (can be files, folders, symlinks, registry entries and more)</td>
+        </tr>
+        <tr>
+            <td><code>new-item -name "Name" -ItemType &lt;directory/file&gt;</code></td>
+            <td></td>
+            <td>Specify the new items name and object type.</td>
+        </tr>
+        <tr>
+            <td><code>Set-Item</code></td>
+            <td>si</td>
+            <td>Modify the property values of an object.</td>
+        </tr>
+        <tr>
+            <td><code>Copy-Item</code></td>
+            <td>copy / cp / ci</td>
+            <td>Make a duplicate of the item.</td>
+        </tr>
+        <tr>
+            <td><code>Rename-Item</code></td>
+            <td>ren / rni</td>
+            <td>Changes the object name.</td>
+        </tr>
+        <tr>
+            <td><code>Rename-Item .\Object-1.md -NewName Object-2.md</code></td>
+            <td></td>
+            <td>Rename object-1 to object-2.</td>
+        </tr>
+        <tr>
+            <td><code>Remove-Item</code></td>
+            <td>rm / del / rmdir</td>
+            <td>Deletes the object.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Content</code></td>
+            <td>cat / type</td>
+            <td>Displays the content within a file or object.</td>
+        </tr>
+        <tr>
+            <td><code>Add-Content &lt;file&gt; "Content to add"</code></td>
+            <
+
+td>ac</td>
+            <td>Append content to a file.</td>
+        </tr>
+        <tr>
+            <td><code>Set-Content</code></td>
+            <td>sc</td>
+            <td>Overwrite any content in a file with new data.</td>
+        </tr>
+        <tr>
+            <td><code>Clear-Content</code></td>
+            <td>clc</td>
+            <td>Clear the content of the files without deleting the file itself.</td>
+        </tr>
+        <tr>
+            <td><code>Compare-Object</code></td>
+            <td>diff / compare</td>
+            <td>Compare two or more objects against each other. This includes the object itself and the content within.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Input/Output Operators</h2>
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>[command] &gt; [file]</code></td>
+            <td>Redirects the output from a command into a file. Overwrites the specified files' contents.</td>
+        </tr>
+        <tr>
+            <td><code>[command] &gt;&gt; [file]</code></td>
+            <td>Redirects the output from a command into a file. Appends additional output without overwriting the file's original contents.</td>
+        </tr>
+        <tr>
+            <td><code>[command] &lt; [file]</code></td>
+            <td>Redirects the output of the file and passes it into the command.</td>
+        </tr>
+        <tr>
+            <td><code>[command] \| [command2]</code></td>
+            <td>Redirects the output of the first command into a &lt;PIPE&gt; and provides it to the second command.</td>
+        </tr>
+        <tr>
+            <td><code>[command] & [command2]</code></td>
+            <td>Executes both commands in succession. It does not perform checks to see if either command passes or fails.</td>
+        </tr>
+        <tr>
+            <td><code>[command] && [command2]</code></td>
+            <td>Checks to see if the first command executes successfully and then executes the second command. If the first command fails, the current command execution halts and the second command is not executed.</td>
+        </tr>
+        <tr>
+            <td><code>[command] \|\| [command2]</code></td>
+            <td>Checks to see if the first command fails to execute successfully and, if so, proceeds to execute the second command.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Find & Filter Content</h2>
+    <h3>CMD.exe</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>where &lt;file&gt;</code></td>
+            <td>Displays the location of file(s) provided.</td>
+        </tr>
+        <tr>
+            <td><code>where /R &lt;working directory&gt; &lt;file&gt;</code></td>
+            <td>Recursively searches for the file(s) provided starting from the specified directory.</td>
+        </tr>
+        <tr>
+            <td><code>find "example string" &lt;file&gt;</code></td>
+            <td>Searches for a string of text in a file or files, and displays lines of text that contain the specified string.</td>
+        </tr>
+        <tr>
+            <td><code>findstr</code></td>
+            <td>Searches for patterns of text in files. Similar to grep on Unix/Linux.</td>
+        </tr>
+        <tr>
+            <td><code>comp &lt;file1&gt; &lt;file2&gt;</code></td>
+            <td>Compares the contents of two files or sets of files byte-by-byte.</td>
+        </tr>
+        <tr>
+            <td><code>fc &lt;file1&gt; &lt;file2&gt;</code></td>
+            <td>Compares two files or sets of files and displays the differences between them.</td>
+        </tr>
+        <tr>
+            <td><code>sort</code></td>
+            <td>Reads input, sorts data, and writes the results to the screen, a file, or another device.</td>
+        </tr>
+    </table>
+
+    <h3>PowerShell</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Get-Item &lt;item&gt; &lt;PIPE&gt; get-member</code></td>
+            <td>Use Get-Item to select an object and then Get-Member to view the object's properties.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Item &lt;item&gt; &lt;PIPE&gt; Select-Object -Property *</code></td>
+            <td>Select an object and then view its Property values.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Item * &lt;PIPE&gt; Select-Object -Property Name,PasswordLastSet</code></td>
+            <td>Select objects and then filter to view specific properties.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Item * &lt;PIPE&gt; Sort-Object -Property Name &lt;PIPE&gt; Group-Object -property Enabled</code></td>
+            <td>Sort and view Objects by a specific property setting.</td>
+        </tr>
+        <tr>
+            <td><code>Get-ChildItem -Path C:\Users\MTanaka\ -File -Recurse</code></td>
+            <td>List all File objects in the directory specified.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Childitem -Path C:\Users\MTanaka\ -File -Recurse -ErrorAction SilentlyContinue &lt;PIPE&gt; where {($_.Name -like "*.txt")}</code></td>
+            <td>Search for all objects with the '.txt' file extension.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Childitem –Path C:\Users\MTanaka\ -File -Recurse -ErrorAction SilentlyContinue &lt;PIPE&gt; where {($_.Name -like "*.txt" -or $_.Name -like "*.py" -or $_.Name -like "*.ps1" -or $_.Name -like "*.md" -or $_.Name -like "*.csv")}</code></td>
+            <td>Search for objects matching a list of different file extensions.</td>
+        </tr>
+        <tr>
+            <td><code>Get-ChildItem -Path C:\Users\MTanaka\ -Filter "*.txt" -Recurse -File &lt;PIPE&gt; sls "Password","credential","key"</code></td>
+            <td>Search for keywords within an object's content.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>User Commands</h2>
+    <h3>CMD.exe</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>whoami</code></td>
+            <td>Displays the username of the currently logged-on user.</td>
+        </tr>
+        <tr>
+            <td><code>whoami /priv</code></td>
+            <td>Displays the security privileges of the current user.</td>
+        </tr>
+        <tr>
+            <td><code>whoami /groups</code></td>
+            <td>Displays the user groups that the current user belongs to.</td>
+        </tr>
+        <tr>
+            <td><code>whoami /all</code></td>
+            <td>Displays all information about the current user, including username, security identifiers (SID), privileges, and groups.</td>
+        </tr>
+        <tr>
+            <td><code>net user</code></td>
+            <td>Displays a list of the user accounts on the computer.</td>
+        </tr>
+        <tr>
+            <td><code>net localgroup</code></td>
+            <td>Displays the name of the server and the names of local groups on the computer.</td>
+        </tr>
+        <tr>
+            <td><code>net group</code></td>
+            <td>Displays the name of a server and the names of groups on the server. Only able to be used if the machine is joined to the domain.</td>
+        </tr>
+    </table>
+
+    <h3>PowerShell</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Get-LocalGroup</code
+
+></td>
+            <td>View all groups specific to the host only.</td>
+        </tr>
+        <tr>
+            <td><code>Get-LocalUser</code></td>
+            <td>View all local users. Similar to net user.</td>
+        </tr>
+        <tr>
+            <td><code>New-LocalUser -Name "username" -NoPassword</code></td>
+            <td>Create a new Local user.</td>
+        </tr>
+        <tr>
+            <td><code>Set-LocalUser -Name "username" -Password $Password -Description "users description"</code></td>
+            <td>Modify a local user's settings.</td>
+        </tr>
+        <tr>
+            <td><code>Get-LocalGroupMember -Name "Group Name"</code></td>
+            <td>Check Group membership.</td>
+        </tr>
+        <tr>
+            <td><code>AddLocalGroupMember -Group "Group Name" -Member "User-To-Add"</code></td>
+            <td>Add a user to a local group.</td>
+        </tr>
+        <tr>
+            <td><code>Get-WindowsCapability -Name RSAT* -Online \| Add-WindowsCapability -Online</code></td>
+            <td>Install Remote System Administration Tools.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Module -Name ActiveDirectory -ListAvailable</code></td>
+            <td>Locate the Active Directory module.</td>
+        </tr>
+        <tr>
+            <td><code>Get-ADUser -Filter *</code></td>
+            <td>List all domain users.</td>
+        </tr>
+        <tr>
+            <td><code>Get-ADUser -Identity &lt;name&gt;</code></td>
+            <td>Show a specific domain user and its properties.</td>
+        </tr>
+        <tr>
+            <td><code>Get-ADUser -Filter {EmailAddress -like '*greenhorn.corp'}</code></td>
+            <td>Filter domain users based on the EmailAddress property.</td>
+        </tr>
+        <tr>
+            <td><code>New-ADUser -Name "UserName" -Surname "Last Name" -GivenName "First Name" -Office "Security" -OtherAttributes @{'title'="Sensei";'mail'="UserName@greenhorn.corp"} -Accountpassword (Read-Host -AsSecureString "AccountPassword") -Enabled $true</code></td>
+            <td>Create a New Domain user and set its properties such as name, password, and other attributes.</td>
+        </tr>
+        <tr>
+            <td><code>Set-ADUser -Identity &lt;UserName&gt; -Description "Information we want in the description field"</code></td>
+            <td>Modify the property settings of a domain user.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Networking Commands</h2>
+    <h3>CMD.exe</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>ipconfig</code></td>
+            <td>View basic networking configurations.</td>
+        </tr>
+        <tr>
+            <td><code>ipconfig /?</code></td>
+            <td>Displays help and usage information for ipconfig.</td>
+        </tr>
+        <tr>
+            <td><code>ipconfig /all</code></td>
+            <td>View detailed networking configuration information.</td>
+        </tr>
+        <tr>
+            <td><code>net</code></td>
+            <td>CLI utility containing multiple commands to manage and configure network resources.</td>
+        </tr>
+        <tr>
+            <td><code>net share</code></td>
+            <td>Displays info about all of the resources that are shared on the local computer.</td>
+        </tr>
+        <tr>
+            <td><code>net view</code></td>
+            <td>Displays a list of domains, computers, or resources being shared by the specified computer.</td>
+        </tr>
+        <tr>
+            <td><code>arp</code></td>
+            <td>Displays and manages the contents and entries within the Address Resolution Protocol (ARP) cache.</td>
+        </tr>
+        <tr>
+            <td><code>arp /a</code></td>
+            <td>Displays the contents and entries contained within the Address Resolution Protocol (ARP) cache.</td>
+        </tr>
+        <tr>
+            <td><code>netstat -an</code></td>
+            <td>Display current network connections.</td>
+        </tr>
+        <tr>
+            <td><code>nslookup &lt;query&gt;</code></td>
+            <td>Query DNS for a name or address.</td>
+        </tr>
+    </table>
+
+    <h3>PowerShell</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Get-NetIPInterface -ifIndex &lt;#&gt;</code></td>
+            <td>Retrieve network adapter properties of the interface listed as ifIndex #.</td>
+        </tr>
+        <tr>
+            <td><code>Get-NetIPAddress</code></td>
+            <td>Retrieves the IP configurations of each adapter. Similar to IPConfig.</td>
+        </tr>
+        <tr>
+            <td><code>Get-NetNeighbor</code></td>
+            <td>Retrieves the neighbor entries from the cache. Similar to arp -a.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Netroute</code></td>
+            <td>Will print the current route table. Similar to IPRoute.</td>
+        </tr>
+        <tr>
+            <td><code>Set-NetAdapter</code></td>
+            <td>Set basic adapter properties at the Layer-2 level, such as VLAN id, description, and MAC-Address.</td>
+        </tr>
+        <tr>
+            <td><code>Set-NetIPInterface</code></td>
+            <td>Modifies the settings of an interface to include DHCP status, MTU, and other metrics.</td>
+        </tr>
+        <tr>
+            <td><code>Set-NetIPAddress</code></td>
+            <td>Modifies the configuration of a network adapter.</td>
+        </tr>
+        <tr>
+            <td><code>Disable-NetAdapter</code></td>
+            <td>Used to disable network adapter interfaces.</td>
+        </tr>
+        <tr>
+            <td><code>Enable-NetAdapter</code></td>
+            <td>Used to turn network adapters back on and allow network connections.</td>
+        </tr>
+        <tr>
+            <td><code>Restart-NetAdapter</code></td>
+            <td>Used to restart an adapter. It can be useful to help push changes made to adapter settings.</td>
+        </tr>
+        <tr>
+            <td><code>test-NetConnection</code></td>
+            <td>Allows for diagnostic checks to be run on a connection. It supports ping, tcp, route tracing, and more.</td>
+        </tr>
+        <tr>
+            <td><code>Get-WindowsCapability -Online &lt;PIPE&gt; Where-Object Name -like 'OpenSSH*'</code></td>
+            <td>List Windows packages for OpenSSH.</td>
+        </tr>
+        <tr>
+            <td><code>Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0</code></td>
+            <td>Install the SSH package to the host.</td>
+        </tr>
+        <tr>
+            <td><code>ssh &lt;user&gt;@&lt;ip address&gt;</code></td>
+            <td>Basic SSH connect string.</td>
+        </tr>
+        <tr>
+            <td><code>ssh-keygen</code></td>
+            <td>Generate SSH keys for the user you run the command as. This enables the use of the user for remote login.</td>
+        </tr>
+        <tr>
+            <td><code>winrm quickconfig</code></td>
+            <td>Enable WinRM.</td>
+        </tr>
+        <tr>
+            <td><code>Test-WSMan -ComputerName "10.129.224.248"</code></td>
+            <td>Test if the host specified has WinRM running.</td>
+        </tr>
+        <tr>
+            <td><code>Enter-PSSession -ComputerName 10.129.224.248 -Credential htb-student -Authentication Negotiate</code></td>
+            <td>Start a remote PowerShell session with the host specified.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Environment Variables</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>%EXAMPLE_VARIABLE%</code></td>
+            <td>Example format for an environment variable.</td>
+        </tr>
+        <tr>
+           
+
+ <td><code>set</code></td>
+            <td>Prints all available environment variables on the system.</td>
+        </tr>
+        <tr>
+            <td><code>set %VARIABLE_NAME%</code></td>
+            <td>Prints out the value of the environment variable specified. It can also be used to set the variable's value.</td>
+        </tr>
+        <tr>
+            <td><code>echo %VARIABLE_NAME%</code></td>
+            <td>Prints out the value of the environment variable specified. It cannot make any edits to variables and will only print out the values to the console.</td>
+        </tr>
+        <tr>
+            <td><code>set %VARIABLE_NAME%= &lt;Value&gt;</code></td>
+            <td>Creates a new environment variable or modifies an existing one and sets the value for the current command line session.</td>
+        </tr>
+        <tr>
+            <td><code>setx %VARIABLE_NAME% &lt;Value&gt;</code></td>
+            <td>Creates a new environment variable or modifies an existing one and sets the value globally by making changes to the registry.</td>
+        </tr>
+        <tr>
+            <td><code>set %VARIABLE_NAME%= </code></td>
+            <td>Removes the environment variable with the specified name for the current command line session.</td>
+        </tr>
+        <tr>
+            <td><code>setx %VARIABLE_NAME% ""</code></td>
+            <td>Removes the environment variable with the specified name globally.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Services</h2>
+    <h3>CMD.exe</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>sc query</code></td>
+            <td>Lists all running services and provides additional information for each service.</td>
+        </tr>
+        <tr>
+            <td><code>sc query &lt;Name&gt;</code></td>
+            <td>Lists details about a specific service by name.</td>
+        </tr>
+        <tr>
+            <td><code>sc start &lt;Name&gt;</code></td>
+            <td>Start a service by name.</td>
+        </tr>
+        <tr>
+            <td><code>sc stop &lt;Name&gt;</code></td>
+            <td>Stop a service by name.</td>
+        </tr>
+        <tr>
+            <td><code>sc config &lt;Name&gt; start= disabled</code></td>
+            <td>Change settings of the service specified.</td>
+        </tr>
+        <tr>
+            <td><code>tasklist /svc</code></td>
+            <td>Provide a list of services running under each process on the system.</td>
+        </tr>
+        <tr>
+            <td><code>net start</code></td>
+            <td>List all running services.</td>
+        </tr>
+        <tr>
+            <td><code>wmic service list brief</code></td>
+            <td>List all services on the system using WMIC. Includes information such as: ExitCode, Name, ProcessID, StartMode, State, and Status.</td>
+        </tr>
+    </table>
+
+    <h3>PowerShell</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Get-service</code></td>
+            <td>List all services.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Service &lt;PIPE&gt; ft DisplayName,Status</code></td>
+            <td>List all services and format their information by DisplayName and Status.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Service &lt;PIPE&gt; where DisplayName -like '*Name*' &lt;PIPE&gt; ft DisplayName,ServiceName,Status</code></td>
+            <td>Query for a specific service whose name matches '*name*'.</td>
+        </tr>
+        <tr>
+            <td><code>Start-Service &lt;Name&gt;</code></td>
+            <td>Start a service by name.</td>
+        </tr>
+        <tr>
+            <td><code>Stop-Service &lt;Name&gt;</code></td>
+            <td>Stop a service by name.</td>
+        </tr>
+        <tr>
+            <td><code>Set-Service -Name &lt;Name&gt; -StartType Disabled</code></td>
+            <td>Change settings of the service specified.</td>
+        </tr>
+        <tr>
+            <td><code>Get-service -ComputerName ACADEMY-ICL-DC</code></td>
+            <td>Remote query of a hosts services.</td>
+        </tr>
+        <tr>
+            <td><code>Get-Service -ComputerName ACADEMY-ICL-DC \| Where-Object {$_.Status -eq "Running"}</code></td>
+            <td>Remote query of services filtered to only show those that are Running.</td>
+        </tr>
+        <tr>
+            <td><code>Invoke-command -ComputerName ACADEMY-ICL-DC,LOCALHOST -ScriptBlock {Get-Service -Name 'windefend'}</code></td>
+            <td>Issue the Get-Service command on a list of hosts.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Scheduled Tasks</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>schtasks</code></td>
+            <td>Displays all tasks scheduled on the local machine.</td>
+        </tr>
+        <tr>
+            <td><code>schtasks /query</code></td>
+            <td>Displays all tasks scheduled on the local machine. Interchangeable with schtasks command.</td>
+        </tr>
+        <tr>
+            <td><code>schtasks /query /V /FO list</code></td>
+            <td>Displays all scheduled tasks with verbose information in a list format.</td>
+        </tr>
+        <tr>
+            <td><code>schtasks /create</code></td>
+            <td>Allows for the creation of scheduled tasks.</td>
+        </tr>
+        <tr>
+            <td><code>schtasks /create /sc &lt;Schedule Frequency&gt; /tn &lt;Task Name&gt; /tr &lt;Program Path&gt;</code></td>
+            <td>Creates a new scheduled task based on a select schedule, with a provided name, and a program specified to run when the task starts.</td>
+        </tr>
+        <tr>
+            <td><code>schtasks /change</code></td>
+            <td>Allows for modification of an existing scheduled task.</td>
+        </tr>
+        <tr>
+            <td><code>schtasks /change /tn &lt;Task Name&gt; /ru &lt;Username&gt; /rp &lt;Password&gt;</code></td>
+            <td>Modifies a scheduled task with a specified name to run under the permissions of the user account using the provided password for authentication.</td>
+        </tr>
+        <tr>
+            <td><code>schtasks /delete</code></td>
+            <td>Allows for the deletion of scheduled tasks.</td>
+        </tr>
+        <tr>
+            <td><code>schtasks /delete /tn &lt;Task Name&gt;</code></td>
+            <td>Deletes a scheduled task with the matching name.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Interacting With The Web</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Invoke-WebRequest -Uri "https://website-to-visit" -Method GET</code></td>
+            <td>Utilizes Invoke-WebRequest to browse to a website and issue a GET request.</td>
+        </tr>
+        <tr>
+            <td><code>Invoke-WebRequest -Uri "https://website-to-visit.html" -Method GET &lt;PIPE&gt; fl Images</code></td>
+            <td>Issues a GET request to the site specified and then pipes the output to format a list of all image files listed in the site.</td>
+        </tr>
+        <tr>
+            <td><code>Invoke-WebRequest -Uri "https://website-to-visit\file.ps1" -OutFile "C:\&lt;filename&gt;"</code></td>
+            <td>Downloads a file from the website and writes it to disk with -Outfile.</td>
+        </tr>
+        <tr>
+            <td><code>(New-Object Net.WebClient).DownloadFile("https://website-to-visit\tools.zip", "Tools.zip")</code></td>
+            <td>Uses the .NET string Net.WebClient to download a file from the URL specified.</td>
+       
+
+ </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Event Log</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>wevtutil el</code></td>
+            <td>Uses the Windows Events Commandline utility to enumerate all log sources.</td>
+        </tr>
+        <tr>
+            <td><code>wevtutil gl "name"</code></td>
+            <td>Will gather config information about the log specified.</td>
+        </tr>
+        <tr>
+            <td><code>wevtutil qe &lt;Name&gt; /c:5 /rd:true /f:text</code></td>
+            <td>Query a log for events.</td>
+        </tr>
+        <tr>
+            <td><code>wevtutil epl &lt;Name&gt; C:\system_export.evtx</code></td>
+            <td>Export a Log.</td>
+        </tr>
+        <tr>
+            <td><code>Get-WinEvent -ListLog *</code></td>
+            <td>List all logging facilities using PowerShell cmdlets.</td>
+        </tr>
+        <tr>
+            <td><code>Get-WinEvent -LogName 'Name' -MaxEvents 5 &lt;PIPE&gt; Select-Object -ExpandProperty Message</code></td>
+            <td>View the messages of a specific log.</td>
+        </tr>
+        <tr>
+            <td><code>Get-WinEvent -FilterHashTable @{LogName='Security';ID='4625 '}</code></td>
+            <td>Query for a specific log by eventID.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Windows Registry</h2>
+    <h3>Registry Hives</h3>
+    <table>
+        <tr>
+            <th>Hives</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>HKEY_LOCAL_MACHINE (HKLM)</code></td>
+            <td>This subtree contains information about the computer's physical state, such as hardware and operating system data, bus types, memory, device drivers, and more.</td>
+        </tr>
+        <tr>
+            <td><code>HKEY_CURRENT_CONFIG (HKCC)</code></td>
+            <td>This section contains records for the host's current hardware profile. (shows the variance between current and default setups) Think of this as a redirection of the HKLM CurrentControlSet profile key.</td>
+        </tr>
+        <tr>
+            <td><code>HKEY_CLASSES_ROOT (HKCR)</code></td>
+            <td>Filetype information, UI extensions, and backward compatibility settings are defined here.</td>
+        </tr>
+        <tr>
+            <td><code>HKEY_CURRENT_USER (HKCU)</code></td>
+            <td>Value entries here define each user's specific OS and software settings. Roaming profile settings, including user preferences, are stored under HKCU.</td>
+        </tr>
+        <tr>
+            <td><code>HKEY_USERS (HKU)</code></td>
+            <td>The local computer's default User profile and current user configuration settings are defined under HKU.</td>
+        </tr>
+    </table>
+
+    <h3>Registry Commands</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Get-Item -Path Registry::&lt;HIVE&gt;\Path-to-key\ &lt;PIPE&gt; Select-Object -ExpandProperty Property</code></td>
+            <td>See the sub-keys and properties of a registry key.</td>
+        </tr>
+        <tr>
+            <td><code>Get-ChildItem -Path &lt;HIVE&gt;:\Path-to-key -Recurse</code></td>
+            <td>Recursively search through a Key and all subkeys.</td>
+        </tr>
+        <tr>
+            <td><code>Get-ItemProperty -Path Registry::&lt;HIVE&gt;\Path-to-key\key</code></td>
+            <td>View the properties and values of a specific key.</td>
+        </tr>
+        <tr>
+            <td><code>REG QUERY &lt;HIVE&gt;\PATH\KEY</code></td>
+            <td>Use reg.exe to query the registry.</td>
+        </tr>
+        <tr>
+            <td><code>REG QUERY &lt;HIVE&gt; /F "Password" /t REG_SZ /S /K</code></td>
+            <td>Search for specific strings within the Registry hive.</td>
+        </tr>
+        <tr>
+            <td><code>New-Item -Path &lt;HIVE&gt;:\PATH\ -Name KeyName</code></td>
+            <td>Create a new Registry Key.</td>
+        </tr>
+        <tr>
+            <td><code>New-ItemProperty -Path &lt;HIVE&gt;:\PATH\KEY -Name "ValueName" -PropertyType String -Value "C:\Users\htb-student\Downloads\payload.exe"</code></td>
+            <td>Set a new Value pair within a registry Key.</td>
+        </tr>
+        <tr>
+            <td><code>REG add "&lt;HIVE&gt;\PATH\KEY" /v access /t REG_SZ /d "C:\Users\htb-student\Downloads\payload.exe"</code></td>
+            <td>Use Reg.exe to create a new key/value pair.</td>
+        </tr>
+        <tr>
+            <td><code>Remove-ItemProperty -Path &lt;HIVE&gt;:\PATH\KEY -Name "name"</code></td>
+            <td>Delete a key/value from the registry.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>PowerShell Scripting</h2>
+    <h3>PowerShell Extensions</h3>
+    <table>
+        <tr>
+            <th>Extension</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>PS1</code></td>
+            <td>The *.ps1 file extension represents executable PowerShell scripts.</td>
+        </tr>
+        <tr>
+            <td><code>PSM1</code></td>
+            <td>The *.psm1 file extension represents a PowerShell module file. It defines what the module is and what is contained within it.</td>
+        </tr>
+        <tr>
+            <td><code>PSD1</code></td>
+            <td>The *.psd1 is a PowerShell data file detailing the contents of a PowerShell module in a table of key/value pairs.</td>
+        </tr>
+    </table>
+
+    <h3>Commands For Building A Module</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>New-ModuleManifest \Path\&lt;filename&gt;</code></td>
+            <td>This will create the initial manifest for a PowerShell module in the directory you specify.</td>
+        </tr>
+        <tr>
+            <td><code>ni &lt;filename&gt;.psm1 -ItemType File</code></td>
+            <td>Creates a PowerShell module file.</td>
+        </tr>
+        <tr>
+            <td><code>Import-Module &lt;modulename&gt;</code></td>
+            <td>Can be used to import a module into your PowerShell session or to specify modules to import when you run a PowerShell module.</td>
+        </tr>
+        <tr>
+            <td><code>$Variable = &lt;input&gt;</code></td>
+            <td>Creates a callable variable and sets its value to the input specified.</td>
+        </tr>
+        <tr>
+            <td><code>function &lt;name&gt; { Tasks to run }</code></td>
+            <td>Create a new function within a Module for use.</td>
+        </tr>
+        <tr>
+            <td><code># Comment block</code></td>
+            <td>Creates a one-line comment in a script or Module.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;# Comments #&gt;</code></td>
+            <td>Creates a multi-line comment block. Everything that falls within the &lt;# #&gt; regardless of line count will be considered a part of the comment block.</td>
+        </tr>
+        <tr>
+            <td><code>Export-ModuleMember -Function &lt;name&gt; -Variable &lt;variablename&gt;</code></td>
+            <td>Specifies that the functions and variables listed can be exported by other scripts, sessions, or modules.</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+```

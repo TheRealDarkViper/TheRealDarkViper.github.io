@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Fundamentals Cheatsheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #000;
+            color: #0f0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        table, th, td {
+            border: 1px solid #0f0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        code {
+            background-color: #333;
+            color: #0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #0f0;
+            padding-left: 1em;
+            color: #666;
+        }
+        .section-divider {
+            border-top: 1px solid #0f0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Windows Fundamentals Cheatsheet</h1>
+
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>xfreerdp /v:&lt;target IP address&gt; /u:htb-student /p:&lt;password&gt;</code></td>
+            <td>RDP to lab target</td>
+        </tr>
+        <tr>
+            <td><code>Get-WmiObject -Class win32_OperatingSystem</code></td>
+            <td>Get information about the operating system</td>
+        </tr>
+        <tr>
+            <td><code>dir c:\ /a</code></td>
+            <td>View all files and directories in the c:\ root directory</td>
+        </tr>
+        <tr>
+            <td><code>tree &lt;directory&gt;</code></td>
+            <td>Graphically displaying the directory structure of a path</td>
+        </tr>
+        <tr>
+            <td><code>tree c:\ /f | more</code></td>
+            <td>Walk through results of the <code>tree</code> command page by page</td>
+        </tr>
+        <tr>
+            <td><code>icacls &lt;directory&gt;</code></td>
+            <td>View the permissions set on a directory</td>
+        </tr>
+        <tr>
+            <td><code>icacls c:\users /grant joe:f</code></td>
+            <td>Grant a user full permissions to a directory</td>
+        </tr>
+        <tr>
+            <td><code>icacls c:\users /remove joe</code></td>
+            <td>Remove a users' permissions on a directory</td>
+        </tr>
+        <tr>
+            <td><code>Get-Service</code></td>
+            <td><code>PowerShell</code> cmdlet to view running services</td>
+        </tr>
+        <tr>
+            <td><code>help &lt;command&gt;</code></td>
+            <td>Display the help menu for a specific command</td>
+        </tr>
+        <tr>
+            <td><code>get-alias</code></td>
+            <td>List <code>PowerShell</code> aliases</td>
+        </tr>
+        <tr>
+            <td><code>New-Alias -Name "Show-Files" Get-ChildItem</code></td>
+            <td>Create a new <code>PowerShell</code> alias</td>
+        </tr>
+        <tr>
+            <td><code>Get-Module | select Name,ExportedCommands | fl</code></td>
+            <td>View imported <code>PowerShell</code> modules and their associated commands</td>
+        </tr>
+        <tr>
+            <td><code>Get-ExecutionPolicy -List</code></td>
+            <td>View the <code>PowerShell</code> execution policy</td>
+        </tr>
+        <tr>
+            <td><code>Set-ExecutionPolicy Bypass -Scope Process</code></td>
+            <td>Set the <code>PowerShell</code> execution policy to bypass for the current session</td>
+        </tr>
+        <tr>
+            <td><code>wmic os list brief</code></td>
+            <td>Get information about the operating system with <code>wmic</code></td>
+        </tr>
+        <tr>
+            <td><code>Invoke-WmiMethod</code></td>
+            <td>Call methods of <code>WMI</code> objects</td>
+        </tr>
+        <tr>
+            <td><code>whoami /user</code></td>
+            <td>View the current users' SID</td>
+        </tr>
+        <tr>
+            <td><code>reg query &lt;key&gt;</code></td>
+            <td>View information about a registry key</td>
+        </tr>
+        <tr>
+            <td><code>Get-MpComputerStatus</code></td>
+            <td>Check which <code>Defender</code> protection settings are enabled</td>
+        </tr>
+        <tr>
+            <td><code>sconfig</code></td>
+            <td>Load Server Configuration menu in Windows Server Core</td>
+        </tr>
+    </table>
+</body>
+</html>

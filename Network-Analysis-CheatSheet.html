@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Analysis CheatSheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #000;
+            color: #0f0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        table, th, td {
+            border: 1px solid #0f0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        code {
+            background-color: #333;
+            color: #0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #0f0;
+            padding-left: 1em;
+            color: #666;
+        }
+        .section-divider {
+            border-top: 1px solid #0f0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Analysis CheatSheet</h1>
+
+    <div class="section-divider"></div>
+    <h2>Tcpdump</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>tcpdump --version</code></td>
+            <td>Prints the tcpdump and libpcap version strings then exits.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -h</code></td>
+            <td>Prints the help and usage information.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -D</code></td>
+            <td>Prints a list of usable network interfaces from which tcpdump can capture.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -i (interface name or #)</code></td>
+            <td>Executes tcpdump and utilizes the interface specified to capture on.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -i (int) -w file.pcap</code></td>
+            <td>Runs a capture on the specified interface and writes the output to a file.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -r file.pcap</code></td>
+            <td>TCPDump will read the output from a specified file.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -r/-w file.pcap -l \\| grep 'string'</code></td>
+            <td>TCPDump will utilize the capture traffic from a live capture or a file and set stdout as line-buffered. We can then utilize pipe (\\|) to send that output to other tools such as grep to look for strings or specific patterns.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -i (int) host (ip)</code></td>
+            <td>TCPDump will start a capture on the interface specified at (int) and will only capture traffic originating from or destined to the IP address or hostname specified after <code>host</code>.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -i (int) port (#)</code></td>
+            <td>Will filter the capture for anything sourcing from or destined to port (#) and discard the rest.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -i (int) proto (#)</code></td>
+            <td>Will filter the capture for any protocol traffic matching the (#). For example, (6) would filter for any TCP traffic and discard the rest.</td>
+        </tr>
+        <tr>
+            <td><code>tcpdump -i (int) (proto name)</code></td>
+            <td>Will utilize a protocol's common name to filter the traffic captured. TCP/UDP/ICMP as examples.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Tcpdump Common Switches and Filters</h2>
+    <table>
+        <tr>
+            <th>Switch/Filter</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>D</code></td>
+            <td>Will display any interfaces available to capture from.</td>
+        </tr>
+        <tr>
+            <td><code>i</code></td>
+            <td>Selects an interface to capture from. ex. -i eth0</td>
+        </tr>
+        <tr>
+            <td><code>n</code></td>
+            <td>Do not resolve hostnames.</td>
+        </tr>
+        <tr>
+            <td><code>nn</code></td>
+            <td>Do not resolve hostnames or well-known ports.</td>
+        </tr>
+        <tr>
+            <td><code>e</code></td>
+            <td>Will grab the ethernet header along with upper-layer data.</td>
+        </tr>
+        <tr>
+            <td><code>X</code></td>
+            <td>Show Contents of packets in hex and ASCII.</td>
+        </tr>
+        <tr>
+            <td><code>XX</code></td>
+            <td>Same as X, but will also specify ethernet headers. (like using Xe)</td>
+        </tr>
+        <tr>
+            <td><code>v, vv, vvv</code></td>
+            <td>Increase the verbosity of output shown and saved.</td>
+        </tr>
+        <tr>
+            <td><code>c</code></td>
+            <td>Grab a specific number of packets, then quit the program.</td>
+        </tr>
+        <tr>
+            <td><code>s</code></td>
+            <td>Defines how much of a packet to grab.</td>
+        </tr>
+        <tr>
+            <td><code>S</code></td>
+            <td>Change relative sequence numbers in the capture display to absolute sequence numbers. (13248765839 instead of 101)</td>
+        </tr>
+        <tr>
+            <td><code>q</code></td>
+            <td>Print less protocol information.</td>
+        </tr>
+        <tr>
+            <td><code>r file.pcap</code></td>
+            <td>Read from a file.</td>
+        </tr>
+        <tr>
+            <td><code>w file.pcap</code></td>
+            <td>Write into a file.</td>
+        </tr>
+        <tr>
+            <td><code>host</code></td>
+            <td>Host will filter visible traffic to show anything involving the designated host. Bi-directional.</td>
+        </tr>
+        <tr>
+            <td><code>src / dest</code></td>
+            <td><code>src</code> and <code>dest</code> are modifiers. We can use them to designate a source or destination host or port.</td>
+        </tr>
+        <tr>
+            <td><code>net</code></td>
+            <td><code>net</code> will show us any traffic sourcing from or destined to the network designated. It uses / notation.</td>
+        </tr>
+        <tr>
+            <td><code>proto</code></td>
+            <td>Will filter for a specific protocol type. (ether, TCP, UDP, and ICMP as examples)</td>
+        </tr>
+        <tr>
+            <td><code>port</code></td>
+            <td><code>port</code> is bi-directional. It will show any traffic with the specified port as the source or destination.</td>
+        </tr>
+        <tr>
+            <td><code>portrange</code></td>
+            <td><code>Portrange</code> allows us to specify a range of ports. (0-1024)</td>
+        </tr>
+        <tr>
+            <td><code>less / greater "&lt; &gt;"</code></td>
+            <td><code>less</code> and <
+
+code>greater</code> can be used to look for a packet or protocol option of a specific size.</td>
+        </tr>
+        <tr>
+            <td><code>and / &&</code></td>
+            <td><code>and</code> <code>&&</code> can be used to concatenate two different filters together. for example, src host AND port.</td>
+        </tr>
+        <tr>
+            <td><code>or</code></td>
+            <td><code>or</code> allows for a match on either of two conditions. It does not have to meet both. It can be tricky.</td>
+        </tr>
+        <tr>
+            <td><code>not</code></td>
+            <td><code>not</code> is a modifier saying anything but x. For example, not UDP.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>TShark</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>tshark -h</code></td>
+            <td>Prints the help menu.</td>
+        </tr>
+        <tr>
+            <td><code>tshark -D</code></td>
+            <td>List available interfaces to capture from.</td>
+        </tr>
+        <tr>
+            <td><code>tshark -i (int)</code></td>
+            <td>Capture on a selected interface. Replace (int) with the interface name or number.</td>
+        </tr>
+        <tr>
+            <td><code>tshark -i eth0 -f "host (ip)"</code></td>
+            <td>Apply a filter with (-f) looking for a specific host while utilizing tshark.</td>
+        </tr>
+        <tr>
+            <td><code>D</code></td>
+            <td>Will display any interfaces available to capture from and then exit out.</td>
+        </tr>
+        <tr>
+            <td><code>L</code></td>
+            <td>Will list the Link-layer mediums you can capture from and then exit out. (ethernet as an example)</td>
+        </tr>
+        <tr>
+            <td><code>i</code></td>
+            <td>Choose an interface to capture from. (-i eth0)</td>
+        </tr>
+        <tr>
+            <td><code>f</code></td>
+            <td>Packet filter in libpcap syntax. Used during capture.</td>
+        </tr>
+        <tr>
+            <td><code>c</code></td>
+            <td>Grab a specific number of packets, then quit the program. Defines a stop condition.</td>
+        </tr>
+        <tr>
+            <td><code>a</code></td>
+            <td>Defines an autostop condition. It can be after a duration, specific file size, or after a certain number of packets.</td>
+        </tr>
+        <tr>
+            <td><code>r (pcap-file)</code></td>
+            <td>Read from a file.</td>
+        </tr>
+        <tr>
+            <td><code>W (pcap-file)</code></td>
+            <td>Write into a file using the pcapng format.</td>
+        </tr>
+        <tr>
+            <td><code>P</code></td>
+            <td>Will print the packet summary while writing into a file (-W).</td>
+        </tr>
+        <tr>
+            <td><code>x</code></td>
+            <td>Will add Hex and ASCII output into the capture.</td>
+        </tr>
+        <tr>
+            <td><code>h</code></td>
+            <td>See the help menu.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>WireShark</h2>
+    <h3>Capture Filter</h3>
+    <table>
+        <tr>
+            <th>Capture Filter</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>host x.x.x.x</code></td>
+            <td>Capture only traffic pertaining to a certain host.</td>
+        </tr>
+        <tr>
+            <td><code>net x.x.x.x/24</code></td>
+            <td>Capture traffic to or from a specific network (using slash notation to specify the mask).</td>
+        </tr>
+        <tr>
+            <td><code>src/dst net x.x.x.x/24</code></td>
+            <td>Using src or dst net will only capture traffic sourcing from the specified network or destined to the target network.</td>
+        </tr>
+        <tr>
+            <td><code>port #</code></td>
+            <td>Will filter out all traffic except the port you specify.</td>
+        </tr>
+        <tr>
+            <td><code>not</code></td>
+            <td>Will capture everything except the variable specified. ex. <code>not port 80</code>.</td>
+        </tr>
+        <tr>
+            <td><code>and</code></td>
+            <td>AND will concatenate your specified ports. ex. <code>host 192.168.1.1 and port 80</code>.</td>
+        </tr>
+        <tr>
+            <td><code>portrange x-x</code></td>
+            <td>Portrange will grab traffic from all ports within the range only.</td>
+        </tr>
+        <tr>
+            <td><code>ip / ether / tcp</code></td>
+            <td>These filters will only grab traffic from specified protocol headers.</td>
+        </tr>
+        <tr>
+            <td><code>broadcast / multicast / unicast</code></td>
+            <td>Grabs a specific type of traffic. One to one, one to many, or one to all.</td>
+        </tr>
+    </table>
+
+    <h3>Display Filter</h3>
+    <table>
+        <tr>
+            <th>Display Filter</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>ip.addr == x.x.x.x</code></td>
+            <td>Capture only traffic pertaining to a certain host. This is an OR statement.</td>
+        </tr>
+        <tr>
+            <td><code>ip.addr == x.x.x.x/24</code></td>
+            <td>Capture traffic pertaining to a specific network. This is an OR statement.</td>
+        </tr>
+        <tr>
+            <td><code>ip.src/dst == x.x.x.x</code></td>
+            <td>Capture traffic to or from a specific host.</td>
+        </tr>
+        <tr>
+            <td><code>dns / tcp / ftp / arp / ip</code></td>
+            <td>Filter traffic by a specific protocol. There are many more options.</td>
+        </tr>
+        <tr>
+            <td><code>tcp.port == x</code></td>
+            <td>Filter by a specific tcp port.</td>
+        </tr>
+        <tr>
+            <td><code>src.port / dst.port == x</code></td>
+            <td>Will capture everything except the port specified.</td>
+        </tr>
+        <tr>
+            <td><code>and / or / not</code></td>
+            <td>AND will concatenate, OR will find either of two options, NOT will exclude your input option.</td>
+        </tr>
+        <tr>
+            <td><code>tcp.stream eq #</code></td>
+            <td>Allows us to follow a tcp session in which we captured the entire stream. Replace (#) with the session to reassemble.</td>
+        </tr>
+        <tr>
+            <td><code>http</code></td>
+            <td>Will filter for any traffic matching the http protocol.</td>
+        </tr>
+        <tr>
+            <td><code>http && image-jfif</code></td>
+            <td>This filter will display any packet with a jpeg image file.</td>
+        </tr>
+        <tr>
+            <td><code>ftp</code></td>
+            <td>Filters for the ftp protocol.</td>
+        </tr>
+        <tr>
+            <td><code>ftp.request.command</code></td>
+            <td>Will filter for any control commands sent over ftp control channel.</td>
+        </tr>
+        <tr>
+            <td><code>ftp-data</code></td>
+            <td>Will show any objects transferred over ftp.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Misc Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>sudo *</code></td>
+            <td>Sudo will run the command that proceeds it with elevated privileges.</td>
+        </tr>
+        <tr>
+            <td><code>which (application)</code></td>
+            <td>Utilizes which to determine if (
+
+application) is installed on the host. Replace the application with what you are looking for. ex. <code>which tcpdump</code></td>
+        </tr>
+        <tr>
+            <td><code>sudo apt install (application)</code></td>
+            <td>Uses elevated privileges to install an application package if it does not exist on the host. ex. <code>sudo apt install wireshark</code></td>
+        </tr>
+        <tr>
+            <td><code>man (application)</code></td>
+            <td>Displays the manual pages for an application. ex. <code>man tcpdump</code>.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Common Ports and Protocols</h2>
+    <table>
+        <tr>
+            <th>Port Number</th>
+            <th>Protocol</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>20</code></td>
+            <td>FTP-Data</td>
+            <td>Data channel for passing FTP files.</td>
+        </tr>
+        <tr>
+            <td><code>21</code></td>
+            <td>FTP-Command</td>
+            <td>Control channel for issuing commands to an FTP server.</td>
+        </tr>
+        <tr>
+            <td><code>22</code></td>
+            <td>SSH</td>
+            <td>Secure Shell Service port. Provides secure remote communications.</td>
+        </tr>
+        <tr>
+            <td><code>23</code></td>
+            <td>Telnet</td>
+            <td>Telnet service provides cleartext communications between hosts.</td>
+        </tr>
+        <tr>
+            <td><code>25</code></td>
+            <td>SMTP</td>
+            <td>Simple Mail Transfer protocol. Utilized for email transmissions between servers.</td>
+        </tr>
+        <tr>
+            <td><code>53</code></td>
+            <td>DNS</td>
+            <td>Domain Name Services. Provides name resolution with multiple protocols.</td>
+        </tr>
+        <tr>
+            <td><code>69</code></td>
+            <td>TFTP</td>
+            <td>Trivial File Transfer Protocol. A lightweight, minimal-function transfer protocol.</td>
+        </tr>
+        <tr>
+            <td><code>80</code></td>
+            <td>HTTP</td>
+            <td>HyperText Transfer Protocol. Provides dynamic web services.</td>
+        </tr>
+        <tr>
+            <td><code>88</code></td>
+            <td>Kerberos</td>
+            <td>Providing cryptographic network authentication.</td>
+        </tr>
+        <tr>
+            <td><code>110</code></td>
+            <td>POP3</td>
+            <td>Mail service utilized by clients to retrieve email from a server.</td>
+        </tr>
+        <tr>
+            <td><code>111</code></td>
+            <td>RPC</td>
+            <td>Remote Procedure Call. Remote service for managing network file systems.</td>
+        </tr>
+        <tr>
+            <td><code>115</code></td>
+            <td>SFTP</td>
+            <td>SSH File Transfer Protocol. An extension of SSH providing secure and reliable FTP services.</td>
+        </tr>
+        <tr>
+            <td><code>123</code></td>
+            <td>NTP</td>
+            <td>Network Time Protocol. Provides timing and sync services for network devices.</td>
+        </tr>
+        <tr>
+            <td><code>137</code></td>
+            <td>Netbios-NS</td>
+            <td>Local network name resolution.</td>
+        </tr>
+        <tr>
+            <td><code>139</code></td>
+            <td>Netbios-SSN</td>
+            <td>Provides session services for data transfer. Services like SMB can utilize it.</td>
+        </tr>
+        <tr>
+            <td><code>179</code></td>
+            <td>BGP</td>
+            <td>Border Gateway Protocol. BGP is a protocol for exchanging routing info with autonomous systems worldwide.</td>
+        </tr>
+        <tr>
+            <td><code>389</code></td>
+            <td>LDAP</td>
+            <td>Lightweight Directory Access Protocol. System agnostic authentication and authorization services.</td>
+        </tr>
+        <tr>
+            <td><code>443</code></td>
+            <td>HTTPS</td>
+            <td>HyperText Transfer Protocol Secure. An extension of HTTP utilizing SSL/TLS for encrypting the communications.</td>
+        </tr>
+        <tr>
+            <td><code>445</code></td>
+            <td>SMB</td>
+            <td>Server Message Block. SMB allows for the sharing of services, files, networking ports, and printers between hosts.</td>
+        </tr>
+    </table>
+</body>
+</html>

