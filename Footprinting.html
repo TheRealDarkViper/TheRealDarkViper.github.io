@@ -225,14 +225,57 @@
             <td>Connect to the IMAPS service.</td>
         </tr>
         
-        <h4>INFO: The (1) number is the command number it can be anything, but has to exist for the commands to work</h2>
             <tr>
                 <th>IMAP Commands</th> 
+                <th>INFO: The (1) number is the command number it can be anything, but has to exist for the commands to work</th>
             </tr>
-        <tr>
-            
+        <tr> 
             <td><code>1 LOGIN username</code></td>
-            <td>User's Login</td>
+            <td>User's Login.</td>
+        </tr>
+        <tr>
+            <td><code>1 LIST "" *</code></td>
+            <td>List all directories.</td>
+        </tr>
+        <tr>
+        <td><code>1 CREATE "INBOX"</code></td>
+        <td>Creates a mailbox with a specific name</td>
+        </tr>
+        <tr>
+            <td><code>1 DELETE "INBOX"</code></td>
+            <td>Deletes a mailbox.</td>
+        </tr>
+        <tr>
+            <td><code>1 RENAME "ToRead" "Important"</code></td>
+            <td>Renames a mailbox</td>
+        </tr>
+        <tr>
+            <td><code>1 LSUB "" *</code></td>
+            <td>Returns a subset of names from the set of names that the User has declared as being active or subscribed.</td>
+        </tr>
+        <tr>
+            <td><code>1 UNSELECT MAILBOX</code></td>
+            <td>Exits the selected mailbox.</td>
+        </tr>
+        <tr>
+            <td><code>1 FETCH [UID] (BODY[])</code></td>
+            <td>This will return the full content of the email.</td>
+        </tr>
+        <tr>
+            <td><code>1 CLOSE</code></td>
+            <td>Removes all messages with the Deleted flag set.</td>
+        </tr>
+        <tr>
+            <td><code>1 LOGOUT</code></td>
+            <td>Closes the connection with the IMAP server.</td>
+        </tr>
+        <tr>
+            <th>POP3 Commands</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><code>USER username</code></td>
+            <td>Identifies a user.</td>
         </tr>
     </table>
 
