@@ -47,4 +47,68 @@
             color: #00ff00;
             font-size: 1.5em;
             display: inline-block;
-   
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        a:active {
+            animation: explode 0.6s ease forwards; /* Trigger the explode animation on click */
+        }
+        
+        @keyframes explode {
+            0% {
+                transform: scale(1) rotate(0deg);
+                letter-spacing: normal;
+                color: #00ffff;
+            }
+            20% {
+                transform: scale(1.5) rotate(15deg);
+                letter-spacing: 5px;
+                color: #ff00ff;
+            }
+            50% {
+                transform: scale(1.2) rotate(-10deg);
+                letter-spacing: 2px;
+                color: #00ff00;
+            }
+            80% {
+                transform: scale(0.8) rotate(10deg);
+                letter-spacing: 3px;
+                color: #ffff00;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                letter-spacing: normal;
+                color: #ff0000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DarkVip3r CheatSheets</h1>
+        <h3>Disclaimer: Please only use this information Ethically and on systems you have permission to. Don't Be A Skid!</h3>
+
+        <ul>
+            <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
+            <li><a href="Windows-Commands-CheatSheet.html">Windows Commands CheatSheet</a></li>
+            <li><a href="AD-CheatSheet.html">AD CheatSheet</a></li>
+            <li><a href="Linux-Commands-Cheatsheet.html">Linux Commands CheatSheets</a></li>
+            <li><a href="Linux-Priv-Esc-CheatSheet.html">Linux Privilege Escalation</a></li>
+            <li><a href="Network-Analysis-CheatSheet.html">Network Analysis CheatSheet</a></li>
+            <li><a href="FileTransfer-CheatSheet.html">File Transfer CheatSheet</a></li>
+            <li><a href="Footprinting.html">Footprinting Services CheatSheet</a></li>
+            <li><a href="Password-Attacks-CheatSheet.html">Password Attacks</a></li>
+            <li><a href="Web-Attacks-Cheatsheet.html">Web Attacks</a></li>
+            <li><a href="Web-Requests-CheatSheet.html">Web Requests</a></li>
+            <li><a href="XSS-Cheatsheet.html">XSS CheatSheet</a></li>
+            <li><a href="SQL-Injection-Cheatsheet.html">SQL Injection</a></li>
+            <li><a href="Pivoting.html">Pivoting and Tunneling CheatSheet</a></li>
+            <!-- Add more cheatsheets as needed -->
+        </ul>
+    </div>
+</body>
+</html>
