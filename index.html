@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +20,10 @@
             height: 100vh;
             text-align: center;
             perspective: 1000px; /* Enables 3D effect */
+            transition: opacity 0.8s ease; /* Smooth transition for fade-out effect */
+        }
+        body.fade-out {
+            opacity: 0;
         }
         .container {
             width: 80%;
@@ -104,17 +109,13 @@
                 // Add a shadow effect
                 this.style.boxShadow = `0 0 20px ${randomColor}, 0 0 30px ${randomColor}, 0 0 40px ${randomColor}`;
 
-                // Reset after animation
-                setTimeout(() => {
-                    this.style.color = '';
-                    this.style.transform = '';
-                    this.style.boxShadow = '';
-                }, 1000); // Duration of the effect
+                // Trigger page transition
+                document.body.classList.add('fade-out');
 
-                // Optionally, navigate to the link after the effect
+                // Navigate to the link after a brief delay
                 setTimeout(() => {
                     window.location.href = this.href;
-                }, 500); // Delay navigation to allow the effect to complete
+                }, 500); // Adjust delay to fit the effect duration
             });
         });
     </script>
