@@ -13,14 +13,17 @@
             color: #00ff00;
             background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Change URL if needed */
             background-repeat: repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .container {
             width: 80%;
-            margin: 0 auto;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.8);
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-            margin-top: 50px;
+            text-align: center;
         }
         h1 {
             text-align: center;
@@ -29,45 +32,61 @@
         }
         h3 {
             color: #ff0000;
+            text-align: center;
         }
         ul {
             list-style-type: none;
             padding: 0;
+            text-align: center;
         }
         li {
             margin: 10px 0;
+            display: inline-block;
         }
         a {
             text-decoration: none;
             color: #00ff00;
+            position: relative;
         }
         a:hover {
             text-decoration: underline;
             color: #ff0000;
+        }
+        a:active {
+            animation: clickEffect 0.2s ease;
+        }
+        @keyframes clickEffect {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>DarkVip3r CheatSheets</h1>
-        
-        <h3>Disclaimer:Please only use this information Ethically and on systems you have permission to. Don't Be A Skid!</h3>
-        
+        <h3>Disclaimer: Please only use this information Ethically and on systems you have permission to. Don't Be A Skid!</h3>
+
         <ul>
             <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
             <li><a href="Windows-Commands-CheatSheet.html">Windows Commands CheatSheet</a></li>
             <li><a href="AD-CheatSheet.html">AD CheatSheet</a></li>
             <li><a href="Linux-Commands-Cheatsheet.html">Linux Commands CheatSheets</a></li>
-            <li><a href="Linux-Priv-Esc-CheatSheet.html">Linux Priviledge Escalation</a></li>
+            <li><a href="Linux-Priv-Esc-CheatSheet.html">Linux Privilege Escalation</a></li>
             <li><a href="Network-Analysis-CheatSheet.html">Network Analysis CheatSheet</a></li>
-            <li><a href="FileTransfer-CheatSheet.html">FileTransfer-CheatSheet</a></li>
+            <li><a href="FileTransfer-CheatSheet.html">File Transfer CheatSheet</a></li>
             <li><a href="Footprinting.html">Footprinting Services CheatSheet</a></li>
             <li><a href="Password-Attacks-CheatSheet.html">Password Attacks</a></li>
             <li><a href="Web-Attacks-Cheatsheet.html">Web Attacks</a></li>
             <li><a href="Web-Requests-CheatSheet.html">Web Requests</a></li>
             <li><a href="XSS-Cheatsheet.html">XSS CheatSheet</a></li>
             <li><a href="SQL-Injection-Cheatsheet.html">SQL Injection</a></li>
-            <li><a href="Pivoting.html">Pivoting and Tunneling CheatSheet</a></li>
             <!-- Add more cheatsheets as needed -->
         </ul>
     </div>
