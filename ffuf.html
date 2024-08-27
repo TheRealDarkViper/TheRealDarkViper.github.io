@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ffuf and Wordlists</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="button-container">
+        <!-- Go Home Button -->
+        <a href="index.html" class="go-home-button">Go Home</a>
+    </div>
+        <h1>Ffuf CheatSheet</h1>
+
+        <h2>Ffuf</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>ffuf -h</code></td>
+                    <td>ffuf help</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w wordlist.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ</code></td>
+                    <td>Directory Fuzzing</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w wordlist.txt:FUZZ -u http://SERVER_IP:PORT/indexFUZZ</code></td>
+                    <td>Extension Fuzzing</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w wordlist.txt:FUZZ -u http://SERVER_IP:PORT/blog/FUZZ.php</code></td>
+                    <td>Page Fuzzing</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w wordlist.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ -recursion -recursion-depth 1 -e .php -v</code></td>
+                    <td>Recursive Fuzzing</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w wordlist.txt:FUZZ -u https://FUZZ.hackthebox.eu/</code></td>
+                    <td>Sub-domain Fuzzing</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w wordlist.txt:FUZZ -u http://academy.htb:PORT/ -H 'Host: FUZZ.academy.htb' -fs xxx</code></td>
+                    <td>VHost Fuzzing</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w wordlist.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php?FUZZ=key -fs xxx</code></td>
+                    <td>Parameter Fuzzing - GET</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w wordlist.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' -fs xxx</code></td>
+                    <td>Parameter Fuzzing - POST</td>
+                </tr>
+                <tr>
+                    <td><code>ffuf -w ids.txt:FUZZ -u http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'id=FUZZ' -H 'Content-Type: application/x-www-form-urlencoded' -fs xxx</code></td>
+                    <td>Value Fuzzing</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Wordlists</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>/opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt</code></td>
+                    <td>Directory/Page Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>/opt/useful/SecLists/Discovery/Web-Content/web-extensions.txt</code></td>
+                    <td>Extensions Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>/opt/useful/SecLists/Discovery/DNS/subdomains-top1million-5000.txt</code></td>
+                    <td>Domain Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>/opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt</code></td>
+                    <td>Parameters Wordlist</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Misc</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>sudo sh -c 'echo "SERVER_IP  academy.htb" &gt;&gt; /etc/hosts'</code></td>
+                    <td>Add DNS entry</td>
+                </tr>
+                <tr>
+                    <td><code>for i in $(seq 1 1000); do echo $i &gt;&gt; ids.txt; done</code></td>
+                    <td>Create Sequence Wordlist</td>
+                </tr>
+                <tr>
+                    <td><code>curl http://admin.academy.htb:PORT/admin/admin.php -X POST -d 'id=key' -H 'Content-Type: application/x-www-form-urlencoded'</code></td>
+                    <td>curl w/ POST</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
