@@ -79,9 +79,7 @@
         <h1 style="font-size: 3.5em; margin-top: 0.5em;">DarkVip3r CheatSheets</h1>
         <h3>Disclaimer: Please only use this information Ethically and on systems you have permission to. Don't Be A Skid!</h3>
 
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search for a cheatsheet...">
-        </div>
+        <div class="gcse-search"></div>
 
         <ul id="cheatsheetList">
             <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
@@ -108,69 +106,6 @@
         </ul>
     </div>
 
-    <script>
-        const searchInput = document.getElementById('searchInput');
-        const cheatsheetList = document.getElementById('cheatsheetList');
-        let cheatsheetsData = [];
-
-        // Load data from all cheatsheets (this is a placeholder for fetching content from other pages)
-        fetch('cheatsheets.json')
-            .then(response => response.json())
-            .then(data => {
-                cheatsheetsData = data;
-                updateCheatsheetList('');
-            });
-
-        searchInput.addEventListener('keyup', function () {
-            const filter = searchInput.value.toLowerCase();
-            updateCheatsheetList(filter);
-        });
-
-        function updateCheatsheetList(filter) {
-            cheatsheetList.innerHTML = ''; // Clear current list
-            cheatsheetsData.forEach(cheatsheet => {
-                if (cheatsheet.title.toLowerCase().indexOf(filter) > -1 || cheatsheet.description.toLowerCase().indexOf(filter) > -1) {
-                    const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.href = cheatsheet.url;
-                    a.textContent = cheatsheet.title;
-                    li.appendChild(a);
-                    cheatsheetList.appendChild(li);
-                }
-            });
-        }
-
-        const links = document.querySelectorAll('a');
-
-        links.forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-
-                // Randomly change color
-                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                this.style.color = randomColor;
-
-                // Randomly scale
-                const randomScale = Math.random() * 0.5 + 1;
-                this.style.transform = `scale(${randomScale})`;
-
-                // Random rotation
-                const randomRotation = Math.random() * 360;
-                this.style.transform += ` rotate(${randomRotation}deg)`;
-
-                // Add a shadow effect
-                this.style.boxShadow = `0 0 20px ${randomColor}, 0 0 30px ${randomColor}, 0 0 40px ${randomColor}`;
-
-                // Trigger page transition
-                document.body.classList.add('fade-out');
-
-                // Navigate to the link after a brief delay
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 500); // Adjust delay to fit the effect duration
-            });
-        });
-    </script>
+    <script async src="https://cse.google.com/cse.js?cx=d35c2618a7927420a"></script>
 </body>
 </html>
