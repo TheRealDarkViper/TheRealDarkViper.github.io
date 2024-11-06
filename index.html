@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,6 +60,21 @@
             text-shadow: 0 0 15px #ff0000;
             transform: scale(1.1);
         }
+        .search-bar {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+            border: none;
+            outline: none;
+            background-color: #222;
+            color: #00ff00;
+            border-bottom: 2px solid #00ff00;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +82,11 @@
         <h1>DarkVip3r CheatSheets</h1>
         <h3>Disclaimer: Please only use this information Ethically and on systems you have permission to. Don't Be A Skid!</h3>
 
-        <ul>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for a cheatsheet...">
+        </div>
+
+        <ul id="cheatsheetList">
             <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
             <li><a href="Windows-Commands-CheatSheet.html">Windows Commands CheatSheet</a></li>
             <li><a href="AD-CheatSheet.html">AD CheatSheet</a></li>
@@ -90,12 +108,41 @@
             <li><a href="commonServices.html">Attacking Common Services</a></li>
             <li><a href="commonApp.html">Attacking Common Web Apps Cheatsheet</a></li>
             <li><a href="command-injection-cheatsheet.html">Command Injection CheatSheet</a></li>
-
-            <!-- Add more cheatsheets as needed -->
         </ul>
     </div>
 
     <script>
+        const searchInput = document.getElementById('searchInput');
+        const cheatsheetList = document.getElementById('cheatsheetList');
+        let cheatsheetsData = [];
+
+        // Load data from all cheatsheets (this is a placeholder for fetching content from other pages)
+        fetch('cheatsheets.json')
+            .then(response => response.json())
+            .then(data => {
+                cheatsheetsData = data;
+                updateCheatsheetList('');
+            });
+
+        searchInput.addEventListener('keyup', function () {
+            const filter = searchInput.value.toLowerCase();
+            updateCheatsheetList(filter);
+        });
+
+        function updateCheatsheetList(filter) {
+            cheatsheetList.innerHTML = ''; // Clear current list
+            cheatsheetsData.forEach(cheatsheet => {
+                if (cheatsheet.title.toLowerCase().indexOf(filter) > -1 || cheatsheet.description.toLowerCase().indexOf(filter) > -1) {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = cheatsheet.url;
+                    a.textContent = cheatsheet.title;
+                    li.appendChild(a);
+                    cheatsheetList.appendChild(li);
+                }
+            });
+        }
+
         const links = document.querySelectorAll('a');
 
         links.forEach(link => {
