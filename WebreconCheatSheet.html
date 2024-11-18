@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Reconnaissance CheatSheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="button-container">
+        <!-- Go Home Button -->
+        <a href="index.html" class="go-home-button">Go Home</a>
+    </div>
+    <h1>Web Reconnaissance CheatSheet</h1>
+
+    <div class="section-divider"></div>
+    <h2>Introduction to Web Reconnaissance</h2>
+    <p>Web reconnaissance is the first step in any security assessment or penetration testing engagement. It's akin to a detective's initial investigation, meticulously gathering clues and evidence about a target before formulating a plan of action. In the digital realm, this translates to accumulating information about a website or web application to identify potential vulnerabilities, security misconfigurations, and valuable assets.</p>
+    <p>The primary goals of web reconnaissance revolve around gaining a comprehensive understanding of the target's digital footprint. This includes:</p>
+    <ul>
+        <li><strong>Identifying Assets:</strong> Discovering all associated domains, subdomains, and IP addresses provides a map of the target's online presence.</li>
+        <li><strong>Uncovering Hidden Information:</strong> Uncover directories, files, and technologies that are not readily apparent and could serve as entry points for an attacker.</li>
+        <li><strong>Analyzing the Attack Surface:</strong> Identify open ports, running services, and software versions to assess potential vulnerabilities and weaknesses of the target.</li>
+        <li><strong>Gathering Intelligence:</strong> Collect information about employees, email addresses, and technologies used to aid in social engineering attacks or identify specific vulnerabilities.</li>
+    </ul>
+
+    <div class="section-divider"></div>
+    <h2>Active vs. Passive Reconnaissance</h2>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Risk of Detection</th>
+            <th>Examples</th>
+        </tr>
+        <tr>
+            <td>Active Reconnaissance</td>
+            <td>Involves directly interacting with the target system, such as sending probes or requests.</td>
+            <td>Higher</td>
+            <td>Port scanning, vulnerability scanning, network mapping</td>
+        </tr>
+        <tr>
+            <td>Passive Reconnaissance</td>
+            <td>Gathers information without directly interacting with the target, relying on publicly available data.</td>
+            <td>Lower</td>
+            <td>Search engine queries, WHOIS lookups, DNS enumeration, web archive analysis, social media</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>WHOIS</h2>
+    <p>WHOIS is a query and response protocol used to retrieve information about domain names, IP addresses, and other internet resources. It's essentially a directory service that details who owns a domain, when it was registered, contact information, and more.</p>
+    <p>For example, to find out who owns the domain <code>example.com</code>, run the following command in your terminal:</p>
+    <pre><code>whois example.com</code></pre>
+    <p>Note that WHOIS data can be inaccurate or intentionally obscured, and privacy services may also mask the true owner of a domain.</p>
+
+    <div class="section-divider"></div>
+    <h2>DNS Information Gathering</h2>
+    <p>The Domain Name System (DNS) functions as the internet's GPS, translating domain names into numerical IP addresses computers use to communicate.</p>
+    <p>To retrieve specific information about domain names, use the <code>dig</code> command. For example, to find the IP address associated with <code>example.com</code>:</p>
+    <pre><code>dig example.com A</code></pre>
+    <p>DNS servers store various types of records, each serving a specific purpose:</p>
+    <table>
+        <tr>
+            <th>Record Type</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>Maps a hostname to an IPv4 address.</td>
+        </tr>
+        <tr>
+            <td>AAAA</td>
+            <td>Maps a hostname to an IPv6 address.</td>
+        </tr>
+        <tr>
+            <td>CNAME</td>
+            <td>Creates an alias for a hostname, pointing it to another hostname.</td>
+        </tr>
+        <tr>
+            <td>MX</td>
+            <td>Specifies mail servers responsible for handling email for the domain.</td>
+        </tr>
+        <tr>
+            <td>NS</td>
+            <td>Delegates a DNS zone to a specific authoritative name server.</td>
+        </tr>
+        <tr>
+            <td>TXT</td>
+            <td>Stores arbitrary text information.</td>
+        </tr>
+        <tr>
+            <td>SOA</td>
+            <td>Contains administrative information about a DNS zone.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Subdomain Enumeration</h2>
+    <p>Subdomains are extensions of a primary domain name, often used to organize different sections or services within a website. Subdomain enumeration aims to uncover additional attack surfaces, hidden services, or internal structures of a target's network.</p>
+    <h3>Active vs. Passive Subdomain Enumeration</h3>
+    <table>
+        <tr>
+            <th>Approach</th>
+            <th>Description</th>
+            <th>Examples</th>
+        </tr>
+        <tr>
+            <td>Active Enumeration</td>
+            <td>Directly interacts with the target's DNS servers or utilizes tools to probe for subdomains.</td>
+            <td>Brute-forcing, DNS zone transfers</td>
+        </tr>
+        <tr>
+            <td>Passive Enumeration</td>
+            <td>Collects information about subdomains without directly interacting with the target, relying on public sources.</td>
+            <td>Certificate Transparency (CT) logs, search engine queries</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Web Crawling</h2>
+    <p>Web crawling is the automated exploration of a website's structure. A web crawler, or spider, systematically navigates through web pages by following links, mimicking a user's browsing behavior. This process maps out the site's architecture and gathers valuable information embedded within the pages.</p>
+    <p>To perform a web crawl, use tools like <code>Scrapy</code> to extract links, analyze patterns, and uncover sensitive areas that might be of interest.</p>
+
+    <div class="section-divider"></div>
+    <h2>Google Dorking</h2>
+    <p>Leveraging search engines for reconnaissance involves using advanced search operators to uncover information about your target. This passive technique, often called Open Source Intelligence (OSINT) gathering, can yield valuable insights.</p>
+    <p>Some useful search operators include:</p>
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td><code>site:</code></td>
+            <td>Restricts search results to a specific website.</td>
+            <td><code>site:example.com "password reset"</code></td>
+        </tr>
+        <tr>
+            <td><code>inurl:</code></td>
+            <td>Searches for a specific term in the URL of a page.</td>
+            <td><code>inurl:admin login</code></td>
+        </tr>
+        <tr>
+            <td><code>filetype:</code></td>
+            <td>Limits results to files of a specific type.</td>
+            <td><code>filetype:pdf "confidential report"</code></td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Wayback Machine</h2>
+    <p>Web archives like the <a href="https://archive.org/web/">Wayback Machine</a> store snapshots of websites over time, providing a historical record of their evolution. This can be used to discover past content, hidden directories, or previous vulnerabilities.</p>
+
+</body>
+</html>

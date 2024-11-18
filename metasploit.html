@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSFconsole Commands CheatSheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="button-container">
+        <!-- Go Home Button -->
+        <a href="index.html" class="go-home-button">Go Home</a>
+    </div>
+    <h1>MSFconsole Commands CheatSheet</h1>
+
+    <div class="section-divider"></div>
+    <h2>Using the Metasploit Framework</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>show exploits</code></td>
+            <td>Show all exploits within the Framework.</td>
+        </tr>
+        <tr>
+            <td><code>show payloads</code></td>
+            <td>Show all payloads within the Framework.</td>
+        </tr>
+        <tr>
+            <td><code>show auxiliary</code></td>
+            <td>Show all auxiliary modules within the Framework.</td>
+        </tr>
+        <tr>
+            <td><code>search &lt;name&gt;</code></td>
+            <td>Search for exploits or modules within the Framework.</td>
+        </tr>
+        <tr>
+            <td><code>info</code></td>
+            <td>Load information about a specific exploit or module.</td>
+        </tr>
+        <tr>
+            <td><code>use &lt;name&gt;</code></td>
+            <td>Load an exploit or module (example: use windows/smb/psexec).</td>
+        </tr>
+        <tr>
+            <td><code>use &lt;number&gt;</code></td>
+            <td>Load an exploit by using the index number displayed after the search command.</td>
+        </tr>
+        <tr>
+            <td><code>LHOST</code></td>
+            <td>Your local host’s IP address reachable by the target, often the public IP address when not on a local network. Typically used for reverse shells.</td>
+        </tr>
+        <tr>
+            <td><code>RHOST</code></td>
+            <td>The remote host or the target.</td>
+        </tr>
+        <tr>
+            <td><code>set function</code></td>
+            <td>Set a specific value (for example, LHOST or RHOST).</td>
+        </tr>
+        <tr>
+            <td><code>setg &lt;function&gt;</code></td>
+            <td>Set a specific value globally (for example, LHOST or RHOST).</td>
+        </tr>
+        <tr>
+            <td><code>show options</code></td>
+            <td>Show the options available for a module or exploit.</td>
+        </tr>
+        <tr>
+            <td><code>show targets</code></td>
+            <td>Show the platforms supported by the exploit.</td>
+        </tr>
+        <tr>
+            <td><code>set target &lt;number&gt;</code></td>
+            <td>Specify a specific target index if you know the OS and service pack.</td>
+        </tr>
+        <tr>
+            <td><code>set payload &lt;payload&gt;</code></td>
+            <td>Specify the payload to use.</td>
+        </tr>
+        <tr>
+            <td><code>set payload &lt;number&gt;</code></td>
+            <td>Specify the payload index number to use after the show payloads command.</td>
+        </tr>
+        <tr>
+            <td><code>show advanced</code></td>
+            <td>Show advanced options.</td>
+        </tr>
+        <tr>
+            <td><code>set autorunscript migrate -f</code></td>
+            <td>Automatically migrate to a separate process upon exploit completion.</td>
+        </tr>
+        <tr>
+            <td><code>check</code></td>
+            <td>Determine whether a target is vulnerable to an attack.</td>
+        </tr>
+        <tr>
+            <td><code>exploit</code></td>
+            <td>Execute the module or exploit and attack the target.</td>
+        </tr>
+        <tr>
+            <td><code>exploit -j</code></td>
+            <td>Run the exploit under the context of the job (runs in the background).</td>
+        </tr>
+        <tr>
+            <td><code>exploit -z</code></td>
+            <td>Do not interact with the session after successful exploitation.</td>
+        </tr>
+        <tr>
+            <td><code>exploit -e &lt;encoder&gt;</code></td>
+            <td>Specify the payload encoder to use (example: exploit -e shikata_ga_nai).</td>
+        </tr>
+        <tr>
+            <td><code>exploit -h</code></td>
+            <td>Display help for the exploit command.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Sessions Management</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>sessions -l</code></td>
+            <td>List available sessions (used when handling multiple shells).</td>
+        </tr>
+        <tr>
+            <td><code>sessions -l -v</code></td>
+            <td>List all available sessions and show verbose fields, such as which vulnerability was used when exploiting the system.</td>
+        </tr>
+        <tr>
+            <td><code>sessions -s &lt;script&gt;</code></td>
+            <td>Run a specific Meterpreter script on all Meterpreter live sessions.</td>
+        </tr>
+        <tr>
+            <td><code>sessions -K</code></td>
+            <td>Kill all live sessions.</td>
+        </tr>
+        <tr>
+            <td><code>sessions -c &lt;cmd&gt;</code></td>
+            <td>Execute a command on all live Meterpreter sessions.</td>
+        </tr>
+        <tr>
+            <td><code>sessions -u &lt;sessionID&gt;</code></td>
+            <td>Upgrade a normal Win32 shell to a Meterpreter console.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Database Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>db_create &lt;name&gt;</code></td>
+            <td>Create a database to use with database-driven attacks (example: db_create autopwn).</td>
+        </tr>
+        <tr>
+            <td><code>db_connect &lt;name&gt;</code></td>
+            <td>Create and connect to a database for driven attacks (example: db_connect autopwn).</td>
+        </tr>
+        <tr>
+            <td><code>db_nmap</code></td>
+            <td>Use Nmap and place results in a database. (Normal Nmap syntax is supported, such as -sT -v -P0.)</td>
+        </tr>
+        <tr>
+            <td><code>db_destroy</code></td>
+            <td>Delete the current database.</td>
+        </tr>
+        <tr>
+            <td><code>db_destroy &lt;user:password@host:port/database&gt;</code></td>
+            <td>Delete database using advanced options.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Meterpreter Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>help</code></td>
+            <td>Open Meterpreter usage help.</td>
+        </tr>
+        <tr>
+            <td><code>run &lt;scriptname&gt;</code></td>
+            <td>Run Meterpreter-based scripts; for a full list check the scripts/meterpreter directory.</td>
+        </tr>
+        <tr>
+            <td><code>sysinfo</code></td>
+            <td>Show the system information on the compromised target.</td>
+        </tr>
+        <tr>
+            <td><code>ls</code></td>
+            <td>List the files and folders on the target.</td>
+        </tr>
+        <tr>
+            <td><code>use priv</code></td>
+            <td>Load the privilege extension for extended Meterpreter libraries.</td>
+        </tr>
+        <tr>
+            <td><code>ps</code></td>
+            <td>Show all running processes and which accounts are associated with each process.</td>
+        </tr>
+        <tr>
+            <td><code>migrate &lt;proc. id&gt;</code></td>
+            <td>Migrate to the specific process ID (PID is the target process ID gained from the ps command).</td>
+        </tr>
+        <tr>
+            <td><code>use incognito</code></td>
+            <td>Load incognito functions (used for token stealing and impersonation on a target machine).</td>
+        </tr>
+        <tr>
+            <td><code>list_tokens -u</code></td>
+            <td>List available tokens on the target by user.</td>
+        </tr>
+        <tr>
+            <td><code>list_tokens -g</code></td>
+            <td>List available tokens on the target by group.</td>
+        </tr>
+        <tr>
+            <td><code>impersonate_token &lt;DOMAIN_NAME\USERNAME&gt;</code></td>
+            <td>Impersonate a token available on the target.</td>
+        </tr>
+        <tr>
+            <td><code>steal_token &lt;proc. id&gt;</code></td>
+            <td>Steal the tokens available for a given process and impersonate that token.</td>
+        </tr>
+        <tr>
+            <td><code>drop_token</code></td>
+            <td>Stop impersonating the current token.</td>
+        </tr>
+        <tr>
+            <td><code>getsystem</code></td>
+            <td>Attempt to elevate permissions to SYSTEM-level access through multiple attack vectors.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Command Execution</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>shell</code></td>
+            <td>Drop into an interactive shell with all available tokens.</td>
+        </tr>
+        <tr>
+            <td><code>execute -f &lt;cmd.exe&gt; -i</code></td>
+            <td>Execute cmd.exe and interact with it.</td>
+        </tr>
+        <tr>
+            <td><code>execute -f &lt;cmd.exe&gt; -i -t</code></td>
+            <td>Execute cmd.exe with all available tokens.</td>
+        </tr>
+        <tr>
+            <td><code>execute -f &lt;cmd.exe&gt; -i -H -t</code></td>
+            <td>Execute cmd.exe with all available tokens and make it a hidden process.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Registry and Desktop Interaction</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>rev2self</code></td>
+            <td>Revert back to the original user you used to compromise the target.</td>
+        </tr>
+        <tr>
+            <td><code>reg &lt;command&gt;</code></td>
+            <td>Interact, create, delete, query, set, and much more in the target’s registry.</td>
+        </tr>
+        <tr>
+            <td><code>setdesktop &lt;number&gt;</code></td>
+            <td>Switch to a different screen based on who is logged in.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>File and Keylogging Management</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>screenshot</code></td>
+            <td>Take a screenshot of the target’s screen.</td>
+        </tr>
+        <tr>
+            <td><code>upload &lt;filename&gt;</code></td>
+            <td>Upload a file to the target.</td>
+        </tr>
+        <tr>
+            <td><code>download &lt;filename&gt;</code></td>
+            <td>Download a file from the target.</td>
+        </tr>
+        <tr>
+            <td><code>keyscan_start</code></td>
+            <td>Start sniffing keystrokes on the remote target.</td>
+        </tr>
+        <tr>
+            <td><code>keyscan_dump</code></td>
+            <td>Dump the remote keys captured on the target.</td>
+        </tr>
+        <tr>
+            <td><code>keyscan_stop</code></td>
+            <td>Stop sniffing keystrokes on the remote target.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Privilege Management and Sniffing</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>getprivs</code></td>
+            <td>Get as many privileges as possible on the target.</td>
+        </tr>
+        <tr>
+            <td><code>uictl enable &lt;keyboard/mouse&gt;</code></td>
+            <td>Take control of the keyboard and/or mouse.</td>
+        </tr>
+        <tr>
+            <td><code>background</code></td>
+            <td>Run your current Meterpreter shell in the background.</td>
+        </tr>
+        <tr>
+            <td><code>hashdump</code></td>
+            <td>Dump all hashes on the target.</td>
+        </tr>
+        <tr>
+            <td><code>use sniffer</code></td>
+            <td>Load the sniffer module.</td>
+        </tr>
+        <tr>
+            <td><code>sniffer_interfaces</code></td>
+            <td>List the available interfaces on the target.</td>
+        </tr>
+        <tr>
+            <td><code>sniffer_dump &lt;interfaceID&gt; pcapname</code></td>
+            <td>Start sniffing on the remote target.</td>
+        </tr>
+        <tr>
+            <td><code>sniffer_start &lt;interfaceID&gt; packet-buffer</code></td>
+            <td>Start sniffing with a specific range for a packet buffer.</td>
+        </tr>
+        <tr>
+            <td><code>sniffer_stats &lt;interfaceID&gt;</code></td>
+            <td>Grab statistical information from the interface you are sniffing.</td>
+        </tr>
+        <tr>
+            <td><code>sniffer_stop &lt;interfaceID&gt;</code></td>
+            <td>Stop the sniffer.</td>
+        </tr>
+    </table>
+
+    <div class="section-divider"></div>
+    <h2>Advanced System Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>add_user &lt;username&gt; &lt;password&gt; -h &lt;ip&gt;</code></td>
+            <td>Add a user on the remote target.</td>
+        </tr>
+        <tr>
+            <td><code>add_group_user &lt;"Domain Admins"&gt; &lt;username&gt; -h &lt;ip&gt;</code></td>
+            <td>Add a username to the Domain Administrators group on the remote target.</td>
+        </tr>
+        <tr>
+            <td><code>clearev</code></td>
+            <td>Clear the event log on the target machine.</td>
+        </tr>
+        <tr>
+            <td><code>timestomp</code></td>
+            <td>Change file attributes, such as creation date (antiforensics measure).</td>
+        </tr>
+        <tr>
+            <td><code>reboot</code></td>
+            <td>Reboot the target machine.</td>
+        </tr>
+
+    </table>
+
+</body>
+</html>
