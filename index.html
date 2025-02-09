@@ -5,45 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DarkVip3r CheatSheets</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("#tools-dropdown").addEventListener("click", function() {
+                document.querySelector("#tools-menu").classList.toggle("hidden");
+            });
+            document.querySelector("#cheatsheets-dropdown").addEventListener("click", function() {
+                document.querySelector("#cheatsheets-menu").classList.toggle("hidden");
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
         <h1>DarkVip3r CheatSheets</h1>
         <p class="tagline">Your ultimate resource for ethical hacking and cybersecurity.</p>
         <nav>
-            <button id="menu-toggle">☰ Menu</button>
-            <ul id="nav-links" class="hidden">
+            <ul>
+                <li><a href="#home">Home</a></li>
                 <li class="dropdown">
-                    <a href="#home" class="dropbtn">Home</a>
-                    <div class="dropdown-content">
-                        <a href="#intro">Introduction</a>
-                        <a href="#faq">FAQ</a>
-                    </div>
+                    <a href="#cheatsheets" id="cheatsheets-dropdown">CheatSheets ▾</a>
+                    <ul class="dropdown-content hidden" id="cheatsheets-menu">
+                        <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
+                        <li><a href="Windows-Commands-CheatSheet.html">Windows Commands</a></li>
+                        <li><a href="AD-CheatSheet.html">Active Directory</a></li>
+                        <li><a href="Linux-Commands-Cheatsheet.html">Linux Commands</a></li>
+                        <li><a href="Linux-Priv-Esc-CheatSheet.html">Linux Privilege Escalation</a></li>
+                        <li><a href="Network-Analysis-CheatSheet.html">Network Analysis</a></li>
+                        <li><a href="FileTransfer-CheatSheet.html">File Transfer</a></li>
+                        <li><a href="Footprinting.html">Footprinting</a></li>
+                        <li><a href="Password-Attacks-CheatSheet.html">Password Attacks</a></li>
+                        <li><a href="Web-Attacks-Cheatsheet.html">Web Attacks</a></li>
+                        <li><a href="Web-Requests-CheatSheet.html">Web Requests</a></li>
+                        <li><a href="XSS-Cheatsheet.html">XSS</a></li>
+                        <li><a href="SQL-Injection-Cheatsheet.html">SQL Injection</a></li>
+                        <li><a href="Pivoting.html">Pivoting</a></li>
+                        <li><a href="file-uploads-cheatsheet.html">File Uploads</a></li>
+                        <li><a href="ffuf.html">FFUF</a></li>
+                        <li><a href="loginCheatsheet.html">Brute Force Login</a></li>
+                        <li><a href="lfiCheatSheet.html">LFI</a></li>
+                        <li><a href="commonServices.html">Attacking Common Services</a></li>
+                        <li><a href="commonApp.html">Attacking Common Web Apps</a></li>
+                        <li><a href="command-injection-cheatsheet.html">Command Injection</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                        <li><a href="WebreconCheatSheet.html">Web Recon</a></li>
+                    </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#cheatsheets" class="dropbtn">CheatSheets</a>
-                    <div class="dropdown-content">
-                        <a href="#windows">Windows</a>
-                        <a href="#linux">Linux</a>
-                        <a href="#web">Web Attacks</a>
-                    </div>
+                    <a href="#tools" id="tools-dropdown">Recommended Tools ▾</a>
+                    <ul class="dropdown-content hidden" id="tools-menu">
+                        <li><a href="#">Tool 1 (Affiliate Link)</a></li>
+                        <li><a href="#">Tool 2 (Affiliate Link)</a></li>
+                        <li><a href="#">Tool 3 (Affiliate Link)</a></li>
+                    </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#tools" class="dropbtn">Recommended Tools</a>
-                    <div class="dropdown-content">
-                        <a href="#tool1">Tool 1</a>
-                        <a href="#tool2">Tool 2</a>
-                        <a href="#tool3">Tool 3</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#about" class="dropbtn">About</a>
-                    <div class="dropdown-content">
-                        <a href="#contact">Contact</a>
-                        <a href="#team">Team</a>
-                    </div>
-                </li>
+                <li><a href="#about">About</a></li>
             </ul>
         </nav>
     </header>
@@ -51,31 +67,7 @@
     <main class="container">
         <section id="cheatsheets">
             <h2>CheatSheets</h2>
-            <ul class="cheatsheet-list">
-                <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
-                <li><a href="Windows-Commands-CheatSheet.html">Windows Commands</a></li>
-                <li><a href="AD-CheatSheet.html">AD CheatSheet</a></li>
-                <li><a href="Linux-Commands-Cheatsheet.html">Linux Commands</a></li>
-                <li><a href="Linux-Priv-Esc-CheatSheet.html">Linux Privilege Escalation</a></li>
-                <li><a href="Network-Analysis-CheatSheet.html">Network Analysis</a></li>
-                <li><a href="FileTransfer-CheatSheet.html">File Transfer</a></li>
-                <li><a href="Footprinting.html">Footprinting Services</a></li>
-                <li><a href="Password-Attacks-CheatSheet.html">Password Attacks</a></li>
-                <li><a href="Web-Attacks-Cheatsheet.html">Web Attacks</a></li>
-                <li><a href="Web-Requests-CheatSheet.html">Web Requests</a></li>
-                <li><a href="XSS-Cheatsheet.html">XSS CheatSheet</a></li>
-                <li><a href="SQL-Injection-Cheatsheet.html">SQL Injection</a></li>
-                <li><a href="Pivoting.html">Pivoting and Tunneling</a></li>
-                <li><a href="file-uploads-cheatsheet.html">File Upload</a></li>
-                <li><a href="ffuf.html">FFUF</a></li>
-                <li><a href="loginCheatsheet.html">Brute Force Login</a></li>
-                <li><a href="lfiCheatSheet.html">LFI</a></li>
-                <li><a href="commonServices.html">Attacking Common Services</a></li>
-                <li><a href="commonApp.html">Attacking Common Web Apps</a></li>
-                <li><a href="command-injection-cheatsheet.html">Command Injection</a></li>
-                <li><a href="metasploit.html">Metasploit</a></li>
-                <li><a href="WebreconCheatSheet.html">Web Recon</a></li>
-            </ul>
+            <p>Click on a category above to navigate to your desired cheat sheet.</p>
         </section>
 
         <section id="tools" class="affiliate-section">
@@ -92,11 +84,5 @@
     <footer>
         <p>&copy; 2025 DarkVip3r CheatSheets. Ethical hacking for learning purposes only.</p>
     </footer>
-
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('nav-links').classList.toggle('hidden');
-        });
-    </script>
 </body>
 </html>
