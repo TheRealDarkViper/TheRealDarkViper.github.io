@@ -22,7 +22,7 @@
         </nav>
     </header>
 
-    <main>
+    <main class="container">
         <section id="cheatsheets">
             <h2>CheatSheets</h2>
             <ul class="cheatsheet-list">
@@ -52,21 +52,25 @@
             </ul>
         </section>
 
-        <section id="tools">
+        <section id="tools" class="affiliate-section">
             <h2>Recommended Tools</h2>
-            <div class="affiliate-section">
-                <p>Support the site by checking out these cybersecurity tools:</p>
-                <ul>
-                    <li><a href="#">Tool 1 (Affiliate Link)</a></li>
-                    <li><a href="#">Tool 2 (Affiliate Link)</a></li>
-                    <li><a href="#">Tool 3 (Affiliate Link)</a></li>
-                </ul>
-            </div>
+            <p>Support the site by checking out these cybersecurity tools:</p>
+            <ul>
+                <li><a href="#">Tool 1 (Affiliate Link)</a></li>
+                <li><a href="#">Tool 2 (Affiliate Link)</a></li>
+                <li><a href="#">Tool 3 (Affiliate Link)</a></li>
+            </ul>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 DarkVip3r CheatSheets. Ethical hacking for learning purposes only.</p>
     </footer>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
