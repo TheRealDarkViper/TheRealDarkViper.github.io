@@ -1,4 +1,4 @@
-/* DarkVip3r CheatSheets - Fixed Dropdown Menu */
+/* DarkVip3r CheatSheets - Fixed Dropdown Menu and Readability Improvements */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -33,7 +33,6 @@ nav {
     background: #181818;
     padding: 10px 0;
     box-shadow: 0 2px 4px rgba(0, 255, 0, 0.2);
-    position: relative;
 }
 
 nav ul {
@@ -42,7 +41,6 @@ nav ul {
     margin: 0;
     display: flex;
     gap: 20px;
-    position: relative;
 }
 
 nav ul li {
@@ -72,6 +70,7 @@ nav ul li a:hover {
     min-width: 200px;
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
     z-index: 999;
+    border-radius: 5px;
 }
 
 .dropdown-content a {
