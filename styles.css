@@ -67,6 +67,31 @@ nav ul li a:hover {
     text-shadow: 0 0 8px #ff4444;
 }
 
+nav ul li .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #222;
+    min-width: 160px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+    z-index: 1;
+}
+
+nav ul li:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    color: #00ff00;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #00ff00;
+    color: #000;
+}
+
 .container {
     max-width: 1000px;
     margin: 30px auto;
