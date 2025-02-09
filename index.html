@@ -4,121 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DarkVip3r CheatSheets</title>
-    <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 0;
-            background-color: #0d0d0d;
-            color: #00ff00;
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            background-repeat: repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            perspective: 1000px; /* Enables 3D effect */
-            transition: opacity 0.8s ease; /* Smooth transition for fade-out effect */
-        }
-        body.fade-out {
-            opacity: 0;
-        }
-        .container { width: 90%;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-        }
-        h1 { font-size: 3em;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        h3 {
-            color: #ff0000;
-            text-align: center;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        li {
-            margin: 15px 0;
-        }
-        a {
-            text-decoration: none;
-            color: #00ff00;
-            font-size: 1.5em;
-            display: inline-block;
-            position: relative;
-            transition: transform 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
-        }
-        a:hover {
-            color: #ff0000;
-            text-shadow: 0 0 15px #ff0000;
-            transform: scale(1.1);
-        }
-        .search-bar {
-            margin: 20px auto;
-            width: 80%;
-            max-width: 600px;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 1.2em;
-            border: none;
-            outline: none;
-            background-color: #222;
-            color: #00ff00;
-            border-bottom: 2px solid #00ff00;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WDH6HMH0XE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WDH6HMH0XE');
-</script>
-
 <body>
-    <div class="container" style="max-height: 90%; overflow-y: auto;">
-        <h1 style="font-size: 3.5em; margin-top: 0.5em;">DarkVip3r CheatSheets</h1>
-        <h3>Disclaimer: Please only use this information Ethically and on systems you have permission to. Don't Be A Skid!</h3>
+    <header>
+        <h1>DarkVip3r CheatSheets</h1>
+        <p class="tagline">Your ultimate resource for ethical hacking and cybersecurity.</p>
+        <nav>
+            <button id="menu-toggle">☰ Menu</button>
+            <ul id="nav-links" class="hidden">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#cheatsheets">CheatSheets</a></li>
+                <li><a href="#tools">Recommended Tools</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!--<div class="gcse-search"></div>-->
+    <main>
+        <section id="cheatsheets">
+            <h2>CheatSheets</h2>
+            <ul class="cheatsheet-list">
+                <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
+                <li><a href="Windows-Commands-CheatSheet.html">Windows Commands</a></li>
+                <li><a href="AD-CheatSheet.html">AD CheatSheet</a></li>
+                <li><a href="Linux-Commands-Cheatsheet.html">Linux Commands</a></li>
+                <li><a href="Linux-Priv-Esc-CheatSheet.html">Linux Privilege Escalation</a></li>
+                <li><a href="Network-Analysis-CheatSheet.html">Network Analysis</a></li>
+                <li><a href="FileTransfer-CheatSheet.html">File Transfer</a></li>
+                <li><a href="Footprinting.html">Footprinting Services</a></li>
+                <li><a href="Password-Attacks-CheatSheet.html">Password Attacks</a></li>
+                <li><a href="Web-Attacks-Cheatsheet.html">Web Attacks</a></li>
+                <li><a href="Web-Requests-CheatSheet.html">Web Requests</a></li>
+                <li><a href="XSS-Cheatsheet.html">XSS CheatSheet</a></li>
+                <li><a href="SQL-Injection-Cheatsheet.html">SQL Injection</a></li>
+                <li><a href="Pivoting.html">Pivoting and Tunneling</a></li>
+                <li><a href="file-uploads-cheatsheet.html">File Upload</a></li>
+                <li><a href="ffuf.html">FFUF</a></li>
+                <li><a href="loginCheatsheet.html">Brute Force Login</a></li>
+                <li><a href="lfiCheatSheet.html">LFI</a></li>
+                <li><a href="commonServices.html">Attacking Common Services</a></li>
+                <li><a href="commonApp.html">Attacking Common Web Apps</a></li>
+                <li><a href="command-injection-cheatsheet.html">Command Injection</a></li>
+                <li><a href="metasploit.html">Metasploit</a></li>
+                <li><a href="WebreconCheatSheet.html">Web Recon</a></li>
+            </ul>
+        </section>
 
-        <ul id="cheatsheetList">
-            <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
-            <li><a href="Windows-Commands-CheatSheet.html">Windows Commands CheatSheet</a></li>
-            <li><a href="AD-CheatSheet.html">AD CheatSheet</a></li>
-            <li><a href="Linux-Commands-Cheatsheet.html">Linux Commands CheatSheets</a></li>
-            <li><a href="Linux-Priv-Esc-CheatSheet.html">Linux Privilege Escalation</a></li>
-            <li><a href="Network-Analysis-CheatSheet.html">Network Analysis CheatSheet</a></li>
-            <li><a href="FileTransfer-CheatSheet.html">File Transfer CheatSheet</a></li>
-            <li><a href="Footprinting.html">Footprinting Services CheatSheet</a></li>
-            <li><a href="Password-Attacks-CheatSheet.html">Password Attacks</a></li>
-            <li><a href="Web-Attacks-Cheatsheet.html">Web Attacks</a></li>
-            <li><a href="Web-Requests-CheatSheet.html">Web Requests</a></li>
-            <li><a href="XSS-Cheatsheet.html">XSS CheatSheet</a></li>
-            <li><a href="SQL-Injection-Cheatsheet.html">SQL Injection</a></li>
-            <li><a href="Pivoting.html">Pivoting and Tunneling CheatSheet</a></li>
-            <li><a href="file-uploads-cheatsheet.html">File Upload CheatSheet</a></li>
-            <li><a href="ffuf.html">FFUF Cheatsheet</a></li>
-            <li><a href="loginCheatsheet.html">Brute Force Login Cheatsheet</a></li>
-            <li><a href="lfiCheatSheet.html">LFI Cheatsheet</a></li>
-            <li><a href="commonServices.html">Attacking Common Services</a></li>
-            <li><a href="commonApp.html">Attacking Common Web Apps Cheatsheet</a></li>
-            <li><a href="command-injection-cheatsheet.html">Command Injection CheatSheet</a></li>
-            <li><a href="metasploit.html">Metasploit CheatSheet</a></li>
-            <li><a href="WebreconCheatSheet.html">Web Recon CheatSheet</a></li>
-        </ul>
-    </div>
+        <section id="tools">
+            <h2>Recommended Tools</h2>
+            <div class="affiliate-section">
+                <p>Support the site by checking out these cybersecurity tools:</p>
+                <ul>
+                    <li><a href="#">Tool 1 (Affiliate Link)</a></li>
+                    <li><a href="#">Tool 2 (Affiliate Link)</a></li>
+                    <li><a href="#">Tool 3 (Affiliate Link)</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
 
-    <script async src="https://cse.google.com/cse.js?cx=d35c2618a7927420a"></script>
+    <footer>
+        <p>&copy; 2025 DarkVip3r CheatSheets. Ethical hacking for learning purposes only.</p>
+    </footer>
 </body>
 </html>
