@@ -1,4 +1,4 @@
-/* DarkVip3r CheatSheets - Professional Cybersecurity Theme */
+/* DarkVip3r CheatSheets - Enhanced Professional Look */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -11,7 +11,7 @@ body {
 
 header {
     background: #121212;
-    padding: 20px;
+    padding: 15px 0;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
     position: sticky;
@@ -46,7 +46,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
 nav ul li {
@@ -57,16 +57,22 @@ nav ul li a {
     text-decoration: none;
     color: #00ff00;
     font-weight: bold;
-    transition: color 0.3s;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    transition: all 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff4444;
+    text-shadow: 0 0 8px #ff4444;
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
+    max-width: 1000px;
+    margin: 30px auto;
     padding: 20px;
     background: #222;
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
     border-radius: 8px;
 }
 
@@ -90,25 +96,26 @@ table {
 
 table, th, td {
     border: 2px solid #00ff00;
-    padding: 10px;
+    padding: 12px;
     text-align: left;
 }
 
 th {
     background-color: #333;
     color: #00ff00;
+    font-size: 1.2em;
 }
 
 .code-block {
-    background-color: #333;
+    background-color: #000;
     color: #00ff00;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 5px;
     font-family: 'Courier New', monospace;
     display: block;
     overflow-x: auto;
     border: 2px solid #00ff00;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .command-table {
@@ -119,7 +126,7 @@ th {
 
 .command-table th, .command-table td {
     border: 2px solid #00ff00;
-    padding: 10px;
+    padding: 12px;
     text-align: left;
     background-color: #222;
 }
@@ -131,7 +138,7 @@ th {
 
 .go-home-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 18px;
     font-size: 16px;
     color: #00ff00;
     background-color: black;
