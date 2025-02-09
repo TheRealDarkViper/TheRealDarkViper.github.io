@@ -1,4 +1,4 @@
-/* DarkVip3r CheatSheets - Improved Readability & Hacker Aesthetic */
+/* DarkVip3r CheatSheets - Fixed Readability & Table Formatting */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -29,68 +29,6 @@ h1 {
     font-size: 2em;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    background: #181818;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 255, 0, 0.2);
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
-}
-
-nav ul li {
-    position: relative;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #00ff00;
-    font-weight: bold;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    transition: all 0.3s;
-    cursor: pointer;
-}
-
-nav ul li a:hover {
-    color: #66ffcc;
-    text-shadow: 0 0 8px #66ffcc;
-}
-
-/* Dropdown Styling */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #222;
-    min-width: 200px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
-    z-index: 999;
-    border-radius: 5px;
-}
-
-.dropdown-content a {
-    display: block;
-    color: #00ff00;
-    padding: 10px;
-    text-decoration: none;
-}
-
-.dropdown-content a:hover {
-    background-color: #00ff00;
-    color: #000;
-}
-
-nav ul li:hover .dropdown-content {
-    display: block;
-}
-
 .container {
     max-width: 1000px;
     margin: 30px auto;
@@ -110,7 +48,7 @@ code {
     display: inline-block;
     border: 2px solid #00ff00;
     margin: 5px 0;
-    width: 100%;
+    width: auto;
 }
 
 pre {
@@ -125,24 +63,41 @@ pre {
     margin: 15px 0;
 }
 
-.command-table {
+/* Table Styling for CheatSheets */
+table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-    margin: 20px 0;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #222;
 }
 
-.command-table th, .command-table td {
+table, th, td {
     border: 2px solid #00ff00;
     padding: 12px;
     text-align: left;
-    background-color: #222;
-    border-radius: 5px;
+    color: #E0E0E0;
 }
 
-.command-table th {
+th {
     background-color: #333;
     color: #00ff00;
+    font-size: 1.2em;
+}
+
+td code {
+    display: block;
+    padding: 10px;
+    background-color: #000;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 10px;
+}
+
+.section-divider {
+    border-bottom: 2px solid #00ff00;
+    margin: 20px 0;
 }
 
 footer {
