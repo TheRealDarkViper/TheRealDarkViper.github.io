@@ -42,7 +42,7 @@ h1 {
 code {
     background-color: #000;
     color: #00ff00;
-    padding: 10px;
+    padding: 5px 10px;
     border-radius: 5px;
     font-family: 'Courier New', monospace;
     display: inline-block;
@@ -63,7 +63,7 @@ pre {
     margin: 15px 0;
 }
 
-/* Table Styling for CheatSheets */
+/* Table Styling for CheatSheets - Commands Aligned with Descriptions */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -73,9 +73,10 @@ table {
 
 table, th, td {
     border: 2px solid #00ff00;
-    padding: 12px;
+    padding: 10px;
     text-align: left;
     color: #E0E0E0;
+    vertical-align: middle;
 }
 
 th {
@@ -85,14 +86,15 @@ th {
 }
 
 td code {
-    display: block;
-    padding: 10px;
+    display: inline-block;
+    padding: 5px 10px;
     background-color: #000;
     border: 2px solid #00ff00;
     border-radius: 5px;
     color: #00ff00;
     font-family: 'Courier New', monospace;
-    margin-bottom: 10px;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .section-divider {
