@@ -108,25 +108,28 @@ code {
     margin-bottom: 10px;
 }
 
-.code-block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background: #222;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #33ff33;
-    margin-bottom: 15px;
+/* Table Styling for Cheat Sheets */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #111;
     box-shadow: 0 0 10px #33ff33;
 }
 
-.code-block p {
-    margin: 5px 0;
-    color: #fff;
-    font-weight: bold;
-    border: 1px solid #33ff33;
+table, th, td {
+    border: 2px solid #33ff33;
+}
+
+th, td {
     padding: 10px;
-    background: #111;
+    text-align: left;
+    color: #33ff33;
+}
+
+th {
+    background: #222;
+    text-transform: uppercase;
 }
 
 /* Footer */
