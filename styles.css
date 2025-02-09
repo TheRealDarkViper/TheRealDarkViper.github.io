@@ -1,4 +1,4 @@
-/* DarkVip3r CheatSheets - Fixed Readability & Table Formatting */
+/* DarkVip3r CheatSheets - Improved Table Borders & Readability */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -63,17 +63,18 @@ pre {
     margin: 15px 0;
 }
 
-/* Table Styling for CheatSheets - Commands Aligned with Descriptions */
+/* Improved Table Styling for CheatSheets */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    background-color: #222;
+    background-color: #1a1a1a;
+    border: 2px solid #00ff00;
 }
 
 table, th, td {
-    border: 2px solid #00ff00;
-    padding: 10px;
+    border: 1px solid #00ff00;
+    padding: 12px;
     text-align: left;
     color: #E0E0E0;
     vertical-align: middle;
@@ -83,6 +84,7 @@ th {
     background-color: #333;
     color: #00ff00;
     font-size: 1.2em;
+    text-align: center;
 }
 
 td code {
@@ -95,6 +97,10 @@ td code {
     font-family: 'Courier New', monospace;
     margin: 0;
     white-space: nowrap;
+}
+
+tr:nth-child(even) {
+    background-color: #222;
 }
 
 .section-divider {
