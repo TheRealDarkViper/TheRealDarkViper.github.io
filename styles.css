@@ -33,38 +33,6 @@ h1 {
     margin-top: 5px;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    background: #181818;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 255, 0, 0.2);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #00ff00;
-    font-size: 1em;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: #ff4444;
-    text-shadow: 0 0 8px #ff4444;
-}
-
 .container {
     max-width: 1100px;
     margin: auto;
@@ -78,6 +46,21 @@ h2 {
     border-bottom: 2px solid #00ff00;
     padding-bottom: 5px;
     font-size: 1.5em;
+}
+
+.section-divider {
+    border-bottom: 2px solid #00ff00;
+    margin: 20px 0;
+}
+
+.code-block {
+    background-color: #333;
+    color: #00ff00;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    display: block;
+    overflow-x: auto;
 }
 
 .cheatsheet-list {
@@ -118,6 +101,24 @@ h2 {
 
 .affiliate-section a:hover {
     text-shadow: 0 0 5px #ff4444;
+}
+
+.go-home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #00ff00;
+    background-color: black;
+    text-decoration: none;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+.go-home-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00ff00;
 }
 
 footer {
