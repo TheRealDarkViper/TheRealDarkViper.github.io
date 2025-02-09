@@ -65,8 +65,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ffcc00;
-    text-shadow: 0 0 10px #ffcc00;
+    color: #ff0000;
+    text-shadow: 0 0 10px #ff0000;
 }
 
 .dropdown-content {
@@ -102,7 +102,7 @@ code {
     padding: 10px;
     border-radius: 5px;
     display: inline-block;
-    color: #ffcc00;
+    color: #ff0000;
     font-weight: bold;
     border: 1px solid #33ff33;
     margin-bottom: 10px;
@@ -159,6 +159,6 @@ footer {
 }
 
 .go-home-button:hover {
-    background: #ffcc00;
+    background: #ff0000;
     color: #000;
 }
