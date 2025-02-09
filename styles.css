@@ -98,6 +98,37 @@ nav ul li:hover .dropdown-content {
     border-radius: 8px;
 }
 
+/* Restore Readability & Borders for Commands */
+.code-block {
+    background-color: #000;
+    color: #00ff00;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    display: block;
+    overflow-x: auto;
+    border: 2px solid #00ff00;
+    margin: 15px 0;
+}
+
+.command-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.command-table th, .command-table td {
+    border: 2px solid #00ff00;
+    padding: 12px;
+    text-align: left;
+    background-color: #222;
+}
+
+.command-table th {
+    background-color: #333;
+    color: #00ff00;
+}
+
 footer {
     text-align: center;
     padding: 15px;
