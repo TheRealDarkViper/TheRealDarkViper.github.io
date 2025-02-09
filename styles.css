@@ -1,4 +1,4 @@
-/* DarkVip3r CheatSheets - Fixed Dropdown Menu and Readability Improvements */
+/* DarkVip3r CheatSheets - Improved Readability & Hacker Aesthetic */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -7,6 +7,8 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    background-repeat: repeat;
 }
 
 header {
