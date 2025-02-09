@@ -14,10 +14,36 @@
         <nav>
             <button id="menu-toggle">☰ Menu</button>
             <ul id="nav-links" class="hidden">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#cheatsheets">CheatSheets</a></li>
-                <li><a href="#tools">Recommended Tools</a></li>
-                <li><a href="#about">About</a></li>
+                <li class="dropdown">
+                    <a href="#home" class="dropbtn">Home</a>
+                    <div class="dropdown-content">
+                        <a href="#intro">Introduction</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#cheatsheets" class="dropbtn">CheatSheets</a>
+                    <div class="dropdown-content">
+                        <a href="#windows">Windows</a>
+                        <a href="#linux">Linux</a>
+                        <a href="#web">Web Attacks</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#tools" class="dropbtn">Recommended Tools</a>
+                    <div class="dropdown-content">
+                        <a href="#tool1">Tool 1</a>
+                        <a href="#tool2">Tool 2</a>
+                        <a href="#tool3">Tool 3</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#about" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="#contact">Contact</a>
+                        <a href="#team">Team</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
