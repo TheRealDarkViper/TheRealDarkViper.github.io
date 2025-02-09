@@ -108,6 +108,7 @@ code {
     display: inline-block;
     border: 2px solid #00ff00;
     margin: 5px 0;
+    width: 100%;
 }
 
 pre {
@@ -124,7 +125,8 @@ pre {
 
 .command-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 10px;
     margin: 20px 0;
 }
 
@@ -133,6 +135,7 @@ pre {
     padding: 12px;
     text-align: left;
     background-color: #222;
+    border-radius: 5px;
 }
 
 .command-table th {
