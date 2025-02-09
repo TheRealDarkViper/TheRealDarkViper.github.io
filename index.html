@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="styles.css">
     <script defer>
         document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector("#tools-dropdown").addEventListener("click", function() {
-                document.querySelector("#tools-menu").classList.toggle("hidden");
-            });
-            document.querySelector("#cheatsheets-dropdown").addEventListener("click", function() {
-                document.querySelector("#cheatsheets-menu").classList.toggle("hidden");
+            document.querySelectorAll(".dropdown-toggle").forEach(button => {
+                button.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    let menu = this.nextElementSibling;
+                    menu.classList.toggle("hidden");
+                });
             });
         });
     </script>
@@ -22,10 +23,10 @@
         <p class="tagline">Your ultimate resource for ethical hacking and cybersecurity.</p>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="#cheatsheets" id="cheatsheets-dropdown">CheatSheets ▾</a>
-                    <ul class="dropdown-content hidden" id="cheatsheets-menu">
+                    <a href="#" class="dropdown-toggle">CheatSheets ▾</a>
+                    <ul class="dropdown-content hidden">
                         <li><a href="Windows-Fundamentals-CheatSheet.html">Windows Fundamentals</a></li>
                         <li><a href="Windows-Commands-CheatSheet.html">Windows Commands</a></li>
                         <li><a href="AD-CheatSheet.html">Active Directory</a></li>
@@ -49,17 +50,20 @@
                         <li><a href="command-injection-cheatsheet.html">Command Injection</a></li>
                         <li><a href="metasploit.html">Metasploit</a></li>
                         <li><a href="WebreconCheatSheet.html">Web Recon</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                        <li><a href="forensics.html">Forensics</a></li>
+                        <li><a href="reverse-shells.html">Reverse Shells</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#tools" id="tools-dropdown">Recommended Tools ▾</a>
-                    <ul class="dropdown-content hidden" id="tools-menu">
+                    <a href="#" class="dropdown-toggle">Recommended Tools ▾</a>
+                    <ul class="dropdown-content hidden">
                         <li><a href="#">Tool 1 (Affiliate Link)</a></li>
                         <li><a href="#">Tool 2 (Affiliate Link)</a></li>
                         <li><a href="#">Tool 3 (Affiliate Link)</a></li>
                     </ul>
                 </li>
-                <li><a href="#about">About</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </nav>
     </header>
