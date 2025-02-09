@@ -99,7 +99,18 @@ nav ul li:hover .dropdown-content {
 }
 
 /* Restore Readability & Borders for Commands */
-.code-block {
+code {
+    background-color: #000;
+    color: #00ff00;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    display: inline-block;
+    border: 2px solid #00ff00;
+    margin: 5px 0;
+}
+
+pre {
     background-color: #000;
     color: #00ff00;
     padding: 15px;
